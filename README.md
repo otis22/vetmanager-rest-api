@@ -1,5 +1,8 @@
 # vetmanager-rest-api
 
+![GitHub CI](https://github.com/otis22/vetmanager-rest-api/workflows/CI/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/otis22/vetmanager-rest-api/badge.svg?branch=main)](https://coveralls.io/github/otis22/vetmanager-rest-api?branch=main)
+
 ## Installation
 
 ```bash
