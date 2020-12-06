@@ -27,7 +27,7 @@ composer require otis22/vetmanager-rest-api
     1. [Token auth](#token-auth)
 * [For create valid URI](#usage-for-create-valid-uri)
     1. [Only model](#only-model)
-    1. [Model with particalar id](#model-with-particalar-id)
+    1. [Model with particular id](#model-with-particular-id)
 
 
 ### Usage for auth
@@ -92,7 +92,7 @@ $uri = new \Otis22\VetmanagerRestApi\URI\OnlyModel(
 $client->request('GET', $uri->asString()); 
  ```
 
-#### Model with particalar id
+#### Model with particular id
 ```php
 $client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
 
