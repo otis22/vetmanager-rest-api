@@ -18,7 +18,20 @@ Vetmanager - CRM for veterinary with REST API. vetmanager-rest-api is library wi
 ```bash
 composer require otis22/vetmanager-rest-api
 ```
+
 ## Usage 
+
+* [For auth](#usage-for-auth)
+    1. [Api key auth](#api-key-auth)
+    1. [With custom timezone](#with-custom-timezone)
+    1. [Token auth](#token-auth)
+* [For create valid URI](#usage-for-create-valid-uri)
+    1. [Only model](#only-model)
+    1. [Model with particalar id](#model-with-particalar-id)
+
+
+### Usage for auth
+#### Api key auth
 ```php
 $client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
 
@@ -28,8 +41,66 @@ $authHeaders = new Otis22\VetmanagerRestApi\Headers\WithAuth(
     )
 );
 
-$client->request('GET', '/rest/user/1', [
+$client->request('GET', '/rest/api/user/1', [
     'headers' => $authHeaders->asKeyValue()
-]);
-    
+]);    
+```
+#### With custom timezone
+```php
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+
+$myHeaders = [
+    'X-REST-TIME-ZONE' => '+02:00'
+];
+$allHeaders = new Otis22\VetmanagerRestApi\Headers\WithAuthAndParams(
+    new \Otis22\VetmanagerRestApi\Headers\Auth\ByApiKey(
+        new \Otis22\VetmanagerRestApi\Headers\Auth\ApiKey('test-key')
+    ),
+    $myHeaders  
+);
+
+$client->request('GET', '/rest/api/user/1', [
+    'headers' => $allHeaders->asKeyValue()
+]);    
+```
+#### Token auth
+```php
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+
+$authHeaders = new Otis22\VetmanagerRestApi\Headers\WithAuth(
+    new \Otis22\VetmanagerRestApi\Headers\Auth\ByToken(
+        new \Otis22\VetmanagerToken\Credentials\AppName("myapp"),
+        new \Otis22\VetmanagerToken\Token\Concrete("mytoken")
+    )
+);
+
+$client->request('GET', '/rest/api/user/1', [
+    'headers' => $authHeaders->asKeyValue()
+]); 
+```
+
+### Usage for create valid URI
+#### Only model
+```php
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+
+$uri = new \Otis22\VetmanagerRestApi\URI\OnlyModel(
+    new \Otis22\VetmanagerRestApi\Model('invoice')
+);
+
+// request to /rest/api/invoice
+$client->request('GET', $uri->asString()); 
+ ```
+
+#### Model with particalar id
+```php
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+
+$uri = new \Otis22\VetmanagerRestApi\URI\WithId(
+    new \Otis22\VetmanagerRestApi\Model('invoice'),
+    5
+);
+
+// request to /rest/api/invoice/5
+$client->request('GET', $uri->asString()); 
 ```
