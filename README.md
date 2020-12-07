@@ -104,3 +104,26 @@ $uri = new \Otis22\VetmanagerRestApi\URI\WithId(
 // request to /rest/api/invoice/5
 $client->request('GET', $uri->asString()); 
 ```
+
+## Contributing
+
+
+### Run docker container
+```
+cd docker
+docker-compose up
+```
+
+now you can connect to container
+
+```
+docker exec -it vetmanager-rest-api /bin/bash
+```
+
+### Run tests
+
+```
+#run all tests
+
+composer check-all
+```
