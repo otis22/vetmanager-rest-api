@@ -80,6 +80,7 @@
       <path value="$PROJECT_DIR$/vendor/otis22/vetmanager-url" />
       <path value="$PROJECT_DIR$/vendor/otis/php-interfaces" />
       <path value="$PROJECT_DIR$/vendor/otis22/vetmanager-token" />
+      <path value="$PROJECT_DIR$/vendor/elegant-bro/stringify" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />

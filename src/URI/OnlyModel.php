@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Otis22\VetmanagerRestApi\URI;
 
-use Exception;
 use Otis22\VetmanagerRestApi\Model;
 use Otis22\VetmanagerRestApi\URI;
 

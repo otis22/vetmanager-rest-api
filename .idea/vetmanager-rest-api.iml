@@ -78,6 +78,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/otis22/vetmanager-url" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/otis/php-interfaces" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/otis22/vetmanager-token" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/elegant-bro/stringify" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

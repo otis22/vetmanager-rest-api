@@ -28,7 +28,9 @@ composer require otis22/vetmanager-rest-api
 * [For create valid URI](#usage-for-create-valid-uri)
     1. [Only model](#only-model)
     1. [Model with particular id](#model-with-particular-id)
-
+* [For filtering and sorting data](#usage-for-filtering-and-sorting)  
+    1. [Filter example](#how-to-use-filters)
+    1. [Full available filtre list](#full-filter-list)
 
 ### Usage for auth
 #### Api key auth
@@ -41,9 +43,11 @@ $authHeaders = new Otis22\VetmanagerRestApi\Headers\WithAuth(
     )
 );
 
-$client->request('GET', '/rest/api/user/1', [
-    'headers' => $authHeaders->asKeyValue()
-]);    
+$client->request(
+    'GET',
+    '/rest/api/user/1',
+    ['headers' => $authHeaders->asKeyValue()]
+);    
 ```
 #### With custom timezone
 ```php
@@ -59,9 +63,11 @@ $allHeaders = new Otis22\VetmanagerRestApi\Headers\WithAuthAndParams(
     $myHeaders  
 );
 
-$client->request('GET', '/rest/api/user/1', [
-    'headers' => $allHeaders->asKeyValue()
-]);    
+$client->request(
+    'GET',
+    '/rest/api/user/1',
+    ['headers' => $allHeaders->asKeyValue()]
+);    
 ```
 #### Token auth
 ```php
@@ -74,9 +80,11 @@ $authHeaders = new Otis22\VetmanagerRestApi\Headers\WithAuth(
     )
 );
 
-$client->request('GET', '/rest/api/user/1', [
-    'headers' => $authHeaders->asKeyValue()
-]); 
+$client->request(
+    'GET',
+    '/rest/api/user/1',
+    ['headers' => $authHeaders->asKeyValue()]
+); 
 ```
 
 ### Usage for create valid URI
@@ -104,24 +112,52 @@ $uri = new \Otis22\VetmanagerRestApi\URI\WithId(
 // request to /rest/api/invoice/5
 $client->request('GET', $uri->asString()); 
 ```
+### Usage for filtering and sorting
+#### How to use Filters
+
+```php
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+
+$filters = new \Otis22\VetmanagerRestApi\Query\Filters(
+    new \Otis22\VetmanagerRestApi\Query\Filter\EqualTo(
+        new \Otis22\VetmanagerRestApi\Model\Property('propertyName'),
+        new \Otis22\VetmanagerRestApi\Query\Filter\Value\StringValue('propertyValue')
+    )
+    # ... we can use mach more filters new Filters($filterOne, $filterTwo, ... );
+);
+
+$client->request(
+    'GET',
+    '/rest/api/user/1',
+    [
+        'headers' => $authHeaders->asKeyValue(),
+        'query' => $filters->asArray()
+    ]
+); 
+```
+#### Full filter list
+* Otis22\VetmanagerRestApi\Query\Filter\EqualTo - where property is equal to value
+* Otis22\VetmanagerRestApi\Query\Filter\InArray - where property is in list
+* Otis22\VetmanagerRestApi\Query\Filter\LessOrEqualThan - where property is less or equal than value
+* Otis22\VetmanagerRestApi\Query\Filter\LessThan - where property is less than value
+* Otis22\VetmanagerRestApi\Query\Filter\Like - where property is like value(for using MySQL LIKE)
+* Otis22\VetmanagerRestApi\Query\Filter\MoreOrEqualThan - where property is more or equal than value
+* Otis22\VetmanagerRestApi\Query\Filter\MoreThan - where property more than value
+* Otis22\VetmanagerRestApi\Query\Filter\NotEqualTo - where propery is not equal to value
+* Otis22\VetmanagerRestApi\Query\Filter\NotInArray - where property is not in list
 
 ## Contributing
 
-
-### Run docker container
+Local run in docker
 ```
 cd docker
 docker-compose up
 ```
-
 now you can connect to container
-
 ```
 docker exec -it vetmanager-rest-api /bin/bash
 ```
-
-### Run tests
-
+Run tests
 ```
 #run all tests
 

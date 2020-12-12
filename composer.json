@@ -15,7 +15,8 @@
         "otis22/php-interfaces": "^1.1",
         "elegant-bro/arrayee": "^0.1.0",
         "otis22/vetmanager-url": "^0.1.0",
-        "otis22/vetmanager-token": "^0.1.0"
+        "otis22/vetmanager-token": "^0.1.0",
+        "elegant-bro/stringify": "^0.3.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.1",

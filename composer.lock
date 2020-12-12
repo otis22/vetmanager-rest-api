@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "707e008ce0aa941f735b59de7e25cd0a",
+    "content-hash": "3303f868600a1b3b1519f53417648051",
     "packages": [
         {
             "name": "elegant-bro/arrayee",
@@ -96,6 +96,58 @@
                 }
             ],
             "time": "2020-09-18T04:38:35+00:00"
+        },
+        {
+            "name": "elegant-bro/stringify",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/elegant-bro/stringify.git",
+                "reference": "a2977316bb77a9e200db28708002475751548b28"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/elegant-bro/stringify/zipball/a2977316bb77a9e200db28708002475751548b28",
+                "reference": "a2977316bb77a9e200db28708002475751548b28",
+                "shasum": ""
+            },
+            "require": {
+                "elegant-bro/interfaces": "^1.0.0",
+                "ext-json": "*",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "ext-simplexml": "*",
+                "phpunit/phpunit": "^5.7 || ^6.4 || ^7.0",
+                "symfony/cache": "4.3.8",
+                "symfony/http-foundation": "4.3.8",
+                "symfony/mime": "4.3.8",
+                "symplify/easy-coding-standard": "^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "ElegantBro\\Stringify\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pavel Stepanets",
+                    "email": "pahhan.ne@gmail.com"
+                },
+                {
+                    "name": "Dmitry Anikeev",
+                    "email": "anikeev.dmitry@outlook.com"
+                }
+            ],
+            "time": "2020-08-03T15:54:45+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
