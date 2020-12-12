@@ -30,7 +30,7 @@ composer require otis22/vetmanager-rest-api
     1. [Model with particular id](#model-with-particular-id)
 * [For filtering and sorting data](#usage-for-filtering-and-sorting)  
     1. [Filter example](#how-to-use-filters)
-    1. [Full available filtre list](#full-filter-list)
+    1. [Full available filter list](#full-filter-list)
 
 ### Usage for auth
 #### Api key auth
