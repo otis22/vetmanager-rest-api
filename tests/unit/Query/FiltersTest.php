@@ -30,7 +30,7 @@ class FiltersTest extends TestCase
                         new StringValue('test2')
                     )
                 )
-            )->asArray()
+            )->asKeyValue()
         );
     }
 }

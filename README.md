@@ -31,6 +31,8 @@ composer require otis22/vetmanager-rest-api
 * [For filtering and sorting data](#usage-for-filtering-and-sorting)  
     1. [Filter example](#how-to-use-filters)
     1. [Full available filter list](#full-filter-list)
+    1. [Sorts example](#how-to-use-sorts)
+    1. [Both example](#how-to-use-both-sorts-and-filters)
 
 ### Usage for auth
 #### Api key auth
@@ -131,7 +133,7 @@ $client->request(
     '/rest/api/user/1',
     [
         'headers' => $authHeaders->asKeyValue(),
-        'query' => $filters->asArray()
+        'query' => $filters->asKeyValue()
     ]
 ); 
 ```
@@ -145,6 +147,48 @@ $client->request(
 * Otis22\VetmanagerRestApi\Query\Filter\MoreThan - where property more than value
 * Otis22\VetmanagerRestApi\Query\Filter\NotEqualTo - where propery is not equal to value
 * Otis22\VetmanagerRestApi\Query\Filter\NotInArray - where property is not in list
+
+#### How to use Sorts
+```php
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+
+$sorts = new \Otis22\VetmanagerRestApi\Query\Sorts(
+    new \Otis22\VetmanagerRestApi\Query\Sort\AscBy(
+        new \Otis22\VetmanagerRestApi\Model\Property('propertyName')
+    ), 
+    new \Otis22\VetmanagerRestApi\Query\Sort\DescBy(
+        new \Otis22\VetmanagerRestApi\Model\Property('property2Name')
+    )
+);
+
+$client->request(
+    'GET',
+    '/rest/api/user/1',
+    [
+        'headers' => $authHeaders->asKeyValue(),
+        'query' => $sorts->asKeyValue()
+    ]
+); 
+```
+#### How to use both Sorts and Filters
+```php
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+
+$query = new \Otis22\VetmanagerRestApi\Query\Query(
+    new \Otis22\VetmanagerRestApi\Query\Filters(),
+    new \Otis22\VetmanagerRestApi\Query\Sorts()
+);
+
+
+$client->request(
+    'GET',
+    '/rest/api/user/1',
+    [
+        'headers' => $authHeaders->asKeyValue(),
+        'query' => $query->asKeyValue()
+    ]
+); 
+```
 
 ## Contributing
 

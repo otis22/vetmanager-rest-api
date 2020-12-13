@@ -9,20 +9,20 @@ use ElegantBro\Interfaces\Arrayee;
 use Otis22\PhpInterfaces\KeyValue;
 use Otis22\VetmanagerRestApi\Query\Json\EncodedMappedKeyValueArray;
 
-final class Filters implements KeyValue
+final class Sorts implements KeyValue
 {
     /**
      * @var Arrayee
      */
-    private $filters;
+    private $sortsBy;
 
     /**
-     * Filters constructor.
-     * @param Filter ... $filters
+     * Sorts constructor.
+     * @param SortBy ...$sortsBy
      */
-    public function __construct(Filter ...$filters)
+    public function __construct(SortBy ...$sortsBy)
     {
-        $this->filters = new Just($filters);
+        $this->sortsBy = new Just($sortsBy);
     }
 
     /**
@@ -31,8 +31,8 @@ final class Filters implements KeyValue
     public function asKeyValue(): array
     {
         return [
-            'filter' => (
-                new EncodedMappedKeyValueArray($this->filters)
+            'sort' => (
+                new EncodedMappedKeyValueArray($this->sortsBy)
             )->asString()
         ];
     }
