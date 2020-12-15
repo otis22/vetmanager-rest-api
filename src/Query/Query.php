@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Otis22\VetmanagerRestApi\Query;
 
+use ElegantBro\Arrayee\Just;
+use ElegantBro\Arrayee\Merged;
 use Otis22\PhpInterfaces\KeyValue;
+use ElegantBro\Arrayee\Aggregation\Reduced;
 
 final class Query implements KeyValue
 {
@@ -27,12 +30,16 @@ final class Query implements KeyValue
      */
     public function asKeyValue(): array
     {
-        return array_reduce(
-            $this->queries,
+        return Reduced::initialEmpty(
+            new Just($this->queries),
             function (array $carry, KeyValue $current) {
-                return array_merge($carry, $current->asKeyValue());
-            },
-            []
-        );
+                return (
+                    new Merged(
+                        new Just($carry),
+                        new Just($current->asKeyValue())
+                    )
+                )->asArray();
+            }
+        )->asArray();
     }
 }

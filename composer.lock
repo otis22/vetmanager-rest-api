@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "elegant-bro/arrayee",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elegant-bro/arrayee.git",
-                "reference": "d7905453727645bcf7a64801b5dbba19e442941f"
+                "reference": "56390ebc07e33d1f0fa1b5c172b3d1f986922841"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elegant-bro/arrayee/zipball/d7905453727645bcf7a64801b5dbba19e442941f",
-                "reference": "d7905453727645bcf7a64801b5dbba19e442941f",
+                "url": "https://api.github.com/repos/elegant-bro/arrayee/zipball/56390ebc07e33d1f0fa1b5c172b3d1f986922841",
+                "reference": "56390ebc07e33d1f0fa1b5c172b3d1f986922841",
                 "shasum": ""
             },
             "require": {
@@ -57,20 +57,20 @@
                     "email": "m@artemd.ru"
                 }
             ],
-            "time": "2020-08-03T09:23:30+00:00"
+            "time": "2020-12-15T11:11:16+00:00"
         },
         {
             "name": "elegant-bro/interfaces",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elegant-bro/interfaces.git",
-                "reference": "2e403ee1e0f47a971348f5b383f840f283a4dcb4"
+                "reference": "005e9e22dc77ea21d80c0fc358d12a901f4e59f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elegant-bro/interfaces/zipball/2e403ee1e0f47a971348f5b383f840f283a4dcb4",
-                "reference": "2e403ee1e0f47a971348f5b383f840f283a4dcb4",
+                "url": "https://api.github.com/repos/elegant-bro/interfaces/zipball/005e9e22dc77ea21d80c0fc358d12a901f4e59f0",
+                "reference": "005e9e22dc77ea21d80c0fc358d12a901f4e59f0",
                 "shasum": ""
             },
             "require": {
@@ -95,7 +95,7 @@
                     "email": "pahhan.ne@gmail.com"
                 }
             ],
-            "time": "2020-09-18T04:38:35+00:00"
+            "time": "2020-12-08T05:29:18+00:00"
         },
         {
             "name": "elegant-bro/stringify",
@@ -1112,16 +1112,16 @@
         },
         {
             "name": "phar-io/version",
-            "version": "3.0.3",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phar-io/version.git",
-                "reference": "726c026815142e4f8677b7cb7f2249c9ffb7ecae"
+                "reference": "e4782611070e50613683d2b9a57730e9a3ba5451"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phar-io/version/zipball/726c026815142e4f8677b7cb7f2249c9ffb7ecae",
-                "reference": "726c026815142e4f8677b7cb7f2249c9ffb7ecae",
+                "url": "https://api.github.com/repos/phar-io/version/zipball/e4782611070e50613683d2b9a57730e9a3ba5451",
+                "reference": "e4782611070e50613683d2b9a57730e9a3ba5451",
                 "shasum": ""
             },
             "require": {
@@ -1155,7 +1155,7 @@
                 }
             ],
             "description": "Library for handling version information and constraints",
-            "time": "2020-11-30T09:21:21+00:00"
+            "time": "2020-12-13T23:18:30+00:00"
         },
         {
             "name": "php-coveralls/php-coveralls",
@@ -1447,16 +1447,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.58",
+            "version": "0.12.62",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "2a4847df6047b30af28854ed9dc95304cdb56ae5"
+                "reference": "632393159335bbbdd7ca07d19b3ad50d76aa7fd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/2a4847df6047b30af28854ed9dc95304cdb56ae5",
-                "reference": "2a4847df6047b30af28854ed9dc95304cdb56ae5",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/632393159335bbbdd7ca07d19b3ad50d76aa7fd8",
+                "reference": "632393159335bbbdd7ca07d19b3ad50d76aa7fd8",
                 "shasum": ""
             },
             "require": {
@@ -1499,7 +1499,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-29T13:32:03+00:00"
+            "time": "2020-12-13T13:59:38+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
