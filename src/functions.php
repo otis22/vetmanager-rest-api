@@ -38,6 +38,12 @@ function byApiKey(string $apiKey): Headers
     );
 }
 
+/**
+ * Function return uri by model name and id entity
+ * @param string $model
+ * @param int|null $id
+ * @return URI
+ */
 function uri(string $model, ?int $id = null): URI
 {
     return is_null($id)
