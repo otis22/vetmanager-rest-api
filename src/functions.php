@@ -1,0 +1,46 @@
+<?php
+
+namespace Otis22\VetmanagerRestApi;
+
+use Otis22\VetmanagerToken\Credentials\AppName;
+use Otis22\VetmanagerToken\Token;
+use Otis22\VetmanagerRestApi\Headers\Auth;
+use Otis22\VetmanagerRestApi\Headers\WithAuth;
+use Otis22\VetmanagerRestApi\URI;
+
+/**
+ * Function for creating auth headers <code>byToken($apiKey)->asKeyValue()</code>
+ * @param string $appName
+ * @param string $token
+ * @return Headers
+ */
+function byToken(string $appName, string $token): Headers
+{
+    return new WithAuth(
+        new Auth\ByToken(
+            new AppName($appName),
+            new Token\Concrete($token)
+        )
+    );
+}
+
+/**
+ * Function for creating auth headers <code>byToken($apiKey)->asKeyValue()</code>
+ * @param string $apiKey
+ * @return Headers
+ */
+function byApiKey(string $apiKey): Headers
+{
+    return new WithAuth(
+        new Auth\ByApiKey(
+            new Auth\ApiKey($apiKey)
+        )
+    );
+}
+
+function uri(string $model, ?int $id = null): URI
+{
+    return is_null($id)
+        ? new URI\OnlyModel(new Model($model))
+        : new URI\WithId(new Model($model), $id);
+}

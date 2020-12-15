@@ -31,7 +31,10 @@
     "autoload": {
         "psr-4": {
             "Otis22\\VetmanagerRestApi\\": "src"
-        }
+        },
+        "files": [
+            "src/functions.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

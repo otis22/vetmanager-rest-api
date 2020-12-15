@@ -51,6 +51,11 @@ $client->request(
     ['headers' => $authHeaders->asKeyValue()]
 );    
 ```
+or with function 
+```php
+$authHeaders = Otis22\VetmanagerRestApi\byApiKey('test-key');
+# use this after ['headers' => $authHeaders->asKeyValue()]
+```
 #### With custom timezone
 ```php
 $client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
@@ -89,6 +94,12 @@ $client->request(
 ); 
 ```
 
+or with function
+```php
+$authHeaders = Otis22\VetmanagerRestApi\byToken('myapp', 'mytoken');
+# use this after ['headers' => $authHeaders->asKeyValue()]
+```
+
 ### Usage for create valid URI
 #### Only model
 ```php
@@ -101,6 +112,10 @@ $uri = new \Otis22\VetmanagerRestApi\URI\OnlyModel(
 // request to /rest/api/invoice
 $client->request('GET', $uri->asString()); 
  ```
+or with function 
+```php
+$uriString = \Otis22\VetmanagerRestApi\uri('invoice')->asString();
+```
 
 #### Model with particular id
 ```php
@@ -114,6 +129,12 @@ $uri = new \Otis22\VetmanagerRestApi\URI\WithId(
 // request to /rest/api/invoice/5
 $client->request('GET', $uri->asString()); 
 ```
+
+or with function
+```php
+$uriString = \Otis22\VetmanagerRestApi\uri('invoice', 5)->asString();
+```
+
 ### Usage for filtering and sorting
 #### How to use Filters
 
