@@ -32,7 +32,7 @@ final class Query implements KeyValue
     {
         return Reduced::initialEmpty(
             new Just($this->queries),
-            function (array $carry, KeyValue $current) {
+            function (array $carry, KeyValue $current): array {
                 return (
                     new Merged(
                         new Just($carry),
