@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fdacd05f311b689b94afa319acf853a3",
+    "content-hash": "c7be3b32d152b2caf37e193247312094",
     "packages": [
         {
             "name": "elegant-bro/arrayee",
@@ -1046,60 +1046,6 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.10.4"
             },
             "time": "2020-12-20T10:01:03+00:00"
-        },
-        {
-            "name": "otis/vetmanager-api",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/otis22/vetmanager-api.git",
-                "reference": "fd1d46a92d83367c3d7ff6e9f9b18f1143594114"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/otis22/vetmanager-api/zipball/fd1d46a92d83367c3d7ff6e9f9b18f1143594114",
-                "reference": "fd1d46a92d83367c3d7ff6e9f9b18f1143594114",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "guzzlehttp/guzzle": "^6.3"
-            },
-            "require-dev": {
-                "otis22/php-coverage-checker": "^1.2",
-                "php-coveralls/php-coveralls": "^2.2",
-                "phpstan/phpstan": "^0.12.19",
-                "phpunit/phpunit": "^8.1 || ^9.1",
-                "sensiolabs/security-checker": "^6.0",
-                "squizlabs/php_codesniffer": "3.*",
-                "wapmorgan/php-code-fixer": "^2.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Otis22\\VetmanagerApi\\": "src"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Vladimir Romanichev",
-                    "email": "vromanichev24@gmail.com"
-                }
-            ],
-            "description": "Package for work with vetmanager api",
-            "support": {
-                "issues": "https://github.com/otis22/vetmanager-api/issues",
-                "source": "https://github.com/otis22/vetmanager-api/tree/master"
-            },
-            "time": "2020-12-27T20:21:29+00:00"
         },
         {
             "name": "otis22/php-coverage-checker",
@@ -4692,9 +4638,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "otis/vetmanager-api": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

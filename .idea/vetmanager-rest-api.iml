@@ -15,8 +15,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/myclabs/deep-copy" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nikic/php-parser" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/otis/php-interfaces" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/otis/vetmanager-api" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/otis22/php-coverage-checker" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/otis22/php-interfaces" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/otis22/vetmanager-token" />

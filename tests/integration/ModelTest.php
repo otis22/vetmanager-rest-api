@@ -5,10 +5,10 @@ namespace Tests\integration;
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
-use function Otis22\VetmanagerApi\url;
+use function Otis22\VetmanagerUrl\url;
 use function Otis22\VetmanagerRestApi\uri;
 use function Otis22\VetmanagerRestApi\byApiKey;
-use function Otis22\VetmanagerApi\not_empty_env;
+use function getenv;
 
 class ModelTest extends TestCase
 {
@@ -264,14 +264,30 @@ class ModelTest extends TestCase
 
     private function assertIsModelWorking(string $modelName): void
     {
-        $client = new Client(['base_uri' => url(not_empty_env('TEST_DOMAIN_NAME'))->asString()]);
+        $client = new Client(
+            [
+                'base_uri' => url(
+                    strval(
+                        getenv('TEST_DOMAIN_NAME')
+                    )
+                )->asString()
+            ]
+        );
         $request = $client->request(
             'GET',
             uri($modelName)->asString(),
-            ['headers' => byApiKey(not_empty_env("TEST_API_KEY"))->asKeyValue()]
+            [
+                'headers' => byApiKey(
+                    strval(
+                        getenv("TEST_API_KEY")
+                    )
+                )->asKeyValue()
+            ]
         );
         $json = json_decode(
-            strval($request->getBody())
+            strval(
+                $request->getBody()
+            )
         );
         $this->assertTrue($json->success);
     }

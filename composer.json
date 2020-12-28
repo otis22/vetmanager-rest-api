@@ -26,8 +26,7 @@
         "sensiolabs/security-checker": "^6.0",
         "wapmorgan/php-code-fixer": "^2.0",
         "php-coveralls/php-coveralls": "^2.2",
-        "phpunit/phpcov": "^8.0",
-        "otis/vetmanager-api": "@dev"
+        "phpunit/phpcov": "^8.0"
     },
     "autoload": {
         "psr-4": {

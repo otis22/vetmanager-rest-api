@@ -78,11 +78,12 @@
       <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/elegant-bro/arrayee" />
       <path value="$PROJECT_DIR$/vendor/otis22/vetmanager-url" />
-      <path value="$PROJECT_DIR$/vendor/otis/php-interfaces" />
       <path value="$PROJECT_DIR$/vendor/otis22/vetmanager-token" />
       <path value="$PROJECT_DIR$/vendor/elegant-bro/stringify" />
-      <path value="$PROJECT_DIR$/vendor/otis/vetmanager-api" />
     </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.1">
+    <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
   <component name="PhpStan">
     <PhpStan_settings>
