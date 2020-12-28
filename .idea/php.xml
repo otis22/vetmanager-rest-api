@@ -2,7 +2,7 @@
 <project version="4">
   <component name="PhpCodeSniffer">
     <phpcs_settings>
-      <PhpCSConfiguration beautifier_path="$PROJECT_DIR$/vendor/bin/phpcbf" tool_path="$PROJECT_DIR$/vendor/bin/phpcs" />
+      <PhpCSConfiguration tool_path="$PROJECT_DIR$/vendor/bin/phpcs" />
     </phpcs_settings>
   </component>
   <component name="PhpIncludePathManager">
@@ -81,9 +81,9 @@
       <path value="$PROJECT_DIR$/vendor/otis/php-interfaces" />
       <path value="$PROJECT_DIR$/vendor/otis22/vetmanager-token" />
       <path value="$PROJECT_DIR$/vendor/elegant-bro/stringify" />
+      <path value="$PROJECT_DIR$/vendor/otis/vetmanager-api" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
   <component name="PhpStan">
     <PhpStan_settings>
       <PhpStanConfiguration tool_path="$PROJECT_DIR$/vendor/bin/phpstan" />

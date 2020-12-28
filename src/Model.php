@@ -24,7 +24,6 @@ final class Model implements Stringify
         'cassa',
         'cassaclose',
         'cassarashod',
-        'city',
         'cityType',
         'clientPhone',
         'clinics',

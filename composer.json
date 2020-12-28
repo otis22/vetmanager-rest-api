@@ -14,8 +14,8 @@
         "elegant-bro/interfaces": "^1.1",
         "otis22/php-interfaces": "^1.1",
         "elegant-bro/arrayee": "^0.1.0",
-        "otis22/vetmanager-url": "^0.1.0",
-        "otis22/vetmanager-token": "^0.1.0",
+        "otis22/vetmanager-url": "^0.3.0",
+        "otis22/vetmanager-token": "^0.2.0",
         "elegant-bro/stringify": "^0.3.1"
     },
     "require-dev": {
@@ -26,7 +26,8 @@
         "sensiolabs/security-checker": "^6.0",
         "wapmorgan/php-code-fixer": "^2.0",
         "php-coveralls/php-coveralls": "^2.2",
-        "phpunit/phpcov": "^8.0"
+        "phpunit/phpcov": "^8.0",
+        "otis/vetmanager-api": "@dev"
     },
     "autoload": {
         "psr-4": {

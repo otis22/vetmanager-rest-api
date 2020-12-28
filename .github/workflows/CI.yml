@@ -41,4 +41,10 @@ jobs:
         run: |
           composer global require php-coveralls/php-coveralls
           php-coveralls --coverage_clover=build/logs/clover.xml -v
+      - name: Run integration tests
+        env:
+          TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
+          TEST_DOMAIN_NAME: ${{ secrets.TEST_DOMAIN_NAME }}
+        run: |
+          composer integration
 
