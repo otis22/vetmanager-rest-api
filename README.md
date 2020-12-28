@@ -13,6 +13,27 @@ Vetmanager - CRM for veterinary with REST API. vetmanager-rest-api is library wi
 
 [vetmanager REST API in Postman](https://god.postman.co/run-collection/64d692ca1ea129218ccb)
 
+## For what?
+
+1. Full url only by domain name (host might to change)
+1. Model name validation in uri()
+1. Simplify apiKey and token authorization
+1. Sorting, Filtering and others 
+
+```php
+use GuzzleHttp\Client;
+use function Otis22\VetmanagerUrl\url;
+use function Otis22\VetmanagerRestApi\uri;
+use function Otis22\VetmanagerRestApi\byApiKey;
+
+$client = new Client(['base_uri' => url("myclinic")->asString()]);
+$request = $client->request(
+    'GET',
+    uri("invoice")->asString(),
+    ['headers' => byApiKey("myapykey")->asKeyValue()]
+);
+```
+
 ## Installation
 
 ```bash
