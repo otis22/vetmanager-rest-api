@@ -3,272 +3,272 @@
 namespace Tests\integration;
 
 use GuzzleHttp\Client;
-
 use PHPUnit\Framework\TestCase;
 
 use function Otis22\VetmanagerApi\url;
 use function Otis22\VetmanagerRestApi\uri;
 use function Otis22\VetmanagerRestApi\byApiKey;
+use function Otis22\VetmanagerApi\not_empty_env;
 
 class ModelTest extends TestCase
 {
-    public function testGetInvoice()
+    public function testGetInvoice(): void
     {
         $this->assertIsModelWorking('invoice');
     }
 
-    public function testGetClient()
+    public function testGetClient(): void
     {
         $this->assertIsModelWorking('client');
     }
 
-    public function testGetCity()
+    public function testGetCity(): void
     {
         $this->assertIsModelWorking('city');
     }
 
-    public function testGetAdmission()
+    public function testGetAdmission(): void
     {
         $this->assertIsModelWorking('admission');
     }
 
-    public function testGetBreed()
+    public function testGetBreed(): void
     {
         $this->assertIsModelWorking('breed');
     }
 
-    public function testGetCassa()
+    public function testGetCassa(): void
     {
         $this->assertIsModelWorking('cassa');
     }
 
-    public function testGetCassaclose()
+    public function testGetCassaclose(): void
     {
         $this->assertIsModelWorking('cassaclose');
     }
 
-    public function testGetCassarashod()
+    public function testGetCassarashod(): void
     {
         $this->assertIsModelWorking('cassarashod');
     }
 
-    public function testGetCityType()
+    public function testGetCityType(): void
     {
         $this->assertIsModelWorking('cityType');
     }
 
-    public function testGetClientPhone()
+    public function testGetClientPhone(): void
     {
         $this->assertIsModelWorking('clientPhone');
     }
 
-    public function testGetClinics()
+    public function testGetClinics(): void
     {
         $this->assertIsModelWorking('clinics');
     }
 
-    public function testGetClinicsToClients()
+    public function testGetClinicsToClients(): void
     {
         $this->assertIsModelWorking('clinicsToClients');
     }
 
-    public function testGetClinicsToDocuments()
+    public function testGetClinicsToDocuments(): void
     {
         $this->assertIsModelWorking('clinicsToDocuments');
     }
 
-    public function testGetClosingOfInvoices()
+    public function testGetClosingOfInvoices(): void
     {
         $this->assertIsModelWorking('closingOfInvoices');
     }
 
-    public function testGetComboManualItem()
+    public function testGetComboManualItem(): void
     {
         $this->assertIsModelWorking('comboManualItem');
     }
 
-    public function testGetComboManualName()
+    public function testGetComboManualName(): void
     {
         $this->assertIsModelWorking('comboManualName');
     }
 
-    public function testGetDiagnoses()
+    public function testGetDiagnoses(): void
     {
         $this->assertIsModelWorking('diagnoses');
     }
 
-    public function testGetDoctorsResponsible()
+    public function testGetDoctorsResponsible(): void
     {
         $this->assertIsModelWorking('doctorsResponsible');
     }
 
-    public function testGetFailedHook()
+    public function testGetFailedHook(): void
     {
         $this->assertIsModelWorking('failedHook');
     }
 
-    public function testGetFiscalRegister()
+    public function testGetFiscalRegister(): void
     {
         $this->assertIsModelWorking('fiscalRegister');
     }
 
-    public function testGetFiscalRegisterData()
+    public function testGetFiscalRegisterData(): void
     {
         $this->assertIsModelWorking('fiscalRegisterData');
     }
 
-    public function testGetGood()
+    public function testGetGood(): void
     {
         $this->assertIsModelWorking('good');
     }
 
-    public function testGetGoodGroup()
+    public function testGetGoodGroup(): void
     {
         $this->assertIsModelWorking('goodGroup');
     }
 
-    public function testGetGoodSaleParam()
+    public function testGetGoodSaleParam(): void
     {
         $this->assertIsModelWorking('goodSaleParam');
     }
 
-    public function testGetHospitalBlock()
+    public function testGetHospitalBlock(): void
     {
         $this->assertIsModelWorking('hospitalBlock');
     }
 
-    public function testGetHospital()
+    public function testGetHospital(): void
     {
         $this->assertIsModelWorking('hospital');
     }
 
-    public function testGetInvoiceDocument()
+    public function testGetInvoiceDocument(): void
     {
         $this->assertIsModelWorking('invoiceDocument');
     }
 
-    public function testGetLastTime()
+    public function testGetLastTime(): void
     {
         $this->assertIsModelWorking('lastTime');
     }
 
-    public function testGetMedicalCards()
+    public function testGetMedicalCards(): void
     {
         $this->assertIsModelWorking('medicalCards');
     }
 
-    public function testGetPartyAccount()
+    public function testGetPartyAccount(): void
     {
         $this->assertIsModelWorking('partyAccount');
     }
 
-    public function testGetPartyAccountDoc()
+    public function testGetPartyAccountDoc(): void
     {
         $this->assertIsModelWorking('partyAccountDoc');
     }
 
-    public function testGetPayment()
+    public function testGetPayment(): void
     {
         $this->assertIsModelWorking('payment');
     }
 
-    public function testGetPet()
+    public function testGetPet(): void
     {
         $this->assertIsModelWorking('pet');
     }
 
-    public function testGetPetType()
+    public function testGetPetType(): void
     {
         $this->assertIsModelWorking('petType');
     }
 
-    public function testGetProperties()
+    public function testGetProperties(): void
     {
         $this->assertIsModelWorking('properties');
     }
 
-    public function testGetReport()
+    public function testGetReport(): void
     {
         $this->assertIsModelWorking('report');
     }
 
-    public function testGetRole()
+    public function testGetRole(): void
     {
         $this->assertIsModelWorking('role');
     }
 
-    public function testGetServicePrice()
+    public function testGetServicePrice(): void
     {
         $this->assertIsModelWorking('servicePrice');
     }
 
-    public function testGetStoreDocument()
+    public function testGetStoreDocument(): void
     {
         $this->assertIsModelWorking('storeDocument');
     }
 
-    public function testGetStoreDocumentOperation()
+    public function testGetStoreDocumentOperation(): void
     {
         $this->assertIsModelWorking('storeDocumentOperation');
     }
 
-    public function testGetStores()
+    public function testGetStores(): void
     {
         $this->assertIsModelWorking('stores');
     }
 
-    public function testGetStreet()
+    public function testGetStreet(): void
     {
         $this->assertIsModelWorking('street');
     }
 
-    public function testGetSuppliers()
+    public function testGetSuppliers(): void
     {
         $this->assertIsModelWorking('suppliers');
     }
 
-    public function testGetTimesheet()
+    public function testGetTimesheet(): void
     {
         $this->assertIsModelWorking('timesheet');
     }
 
-    public function testGetTimesheetTypes()
+    public function testGetTimesheetTypes(): void
     {
         $this->assertIsModelWorking('timesheetTypes');
     }
 
-    public function testGetUnit()
+    public function testGetUnit(): void
     {
         $this->assertIsModelWorking('unit');
     }
 
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $this->assertIsModelWorking('user');
     }
 
-    public function testGetUserCalls()
+    public function testGetUserCalls(): void
     {
         $this->assertIsModelWorking('userCalls');
     }
 
-    public function testGetUserConfig()
+    public function testGetUserConfig(): void
     {
         $this->assertIsModelWorking('userConfig');
     }
 
-    public function testGetUserPosition()
+    public function testGetUserPosition(): void
     {
         $this->assertIsModelWorking('userPosition');
     }
 
-    private function assertIsModelWorking($modelName)
+    private function assertIsModelWorking(string $modelName): void
     {
-        $client = new Client(['base_uri' => url(getenv('TEST_DOMAIN_NAME'))->asString()]);
+        $client = new Client(['base_uri' => url(not_empty_env('TEST_DOMAIN_NAME'))->asString()]);
         $request = $client->request(
             'GET',
             uri($modelName)->asString(),
-            ['headers' => byApiKey(getenv("TEST_API_KEY"))->asKeyValue()]
+            ['headers' => byApiKey(not_empty_env("TEST_API_KEY"))->asKeyValue()]
         );
         $json = json_decode(
             strval($request->getBody())
