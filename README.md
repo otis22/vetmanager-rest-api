@@ -30,7 +30,7 @@ $client = new Client(['base_uri' => url("myclinic")->asString()]);
 $request = $client->request(
     'GET',
     uri("invoice")->asString(),
-    ['headers' => byApiKey("myapykey")->asKeyValue()]
+    ['headers' => byApiKey("myapikey")->asKeyValue()]
 );
 ```
 
