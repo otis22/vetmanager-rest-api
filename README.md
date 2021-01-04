@@ -234,18 +234,39 @@ $client->request(
 
 ## Contributing
 
-Local run in docker
+For run all tests
+```shell
+make all
 ```
-cd docker
-docker-compose up
+or connect to terminal
+```shell
+make exec
 ```
-now you can connect to container
+*Dafault php version is 7.4*. Use PHP_VERSION= for using custom version.
+```shell
+make all PHP_VERSION=8.0
+# run both 
+make all PHP_VERSION=7.4 && make all PHP_VERSION=8.0
 ```
-docker exec -it vetmanager-rest-api /bin/bash
-```
-Run tests
-```
-#run all tests
 
-composer check-all
+*For integration tests copy .env.example to .env and fill with yours values*
+
+all commands
+```shell
+# security check
+make security
+# composer install
+make install
+# composer install with --no-dev
+make install-no-dev
+# check code style
+make style
+# run static analyze tools
+make static-analyze
+# run unit tests
+make unit
+#  check coverage
+make coverage
+# check integration, .env required
+make integration
 ```

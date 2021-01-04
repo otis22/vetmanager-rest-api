@@ -42,7 +42,7 @@
         }
     },
     "scripts": {
-        "unit": "vendor/bin/phpunit --testsuite main && vendor/bin/php-coverage-checker build/logs/clover.xml 1",
+        "unit": "vendor/bin/phpunit --testsuite main && vendor/bin/php-coverage-checker build/logs/clover.xml 90",
         "integration": "vendor/bin/phpunit --testsuite integration",
         "check-static-analyze": "vendor/bin/phpstan analyse --level=max src tests && vendor/bin/phpdd tests src",
         "check-style": "vendor/bin/phpcs --ignore-annotations --standard=PSR12 src tests",
