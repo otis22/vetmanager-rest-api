@@ -9,7 +9,6 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "^7.1",
         "ext-json": "*",
         "elegant-bro/interfaces": "^1.1",
         "otis22/php-interfaces": "^1.1",
@@ -26,7 +25,8 @@
         "sensiolabs/security-checker": "^6.0",
         "wapmorgan/php-deprecation-detector": "^2.0",
         "php-coveralls/php-coveralls": "^2.2",
-        "phpunit/phpcov": "^8.0"
+        "phpunit/phpcov": "^8.0",
+        "guzzlehttp/guzzle": "^7.1"
     },
     "autoload": {
         "psr-4": {
