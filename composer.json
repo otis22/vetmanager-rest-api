@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "^6.3",
+        "guzzlehttp/guzzle": "^7.1",
         "ext-json": "*",
         "elegant-bro/interfaces": "^1.1",
         "otis22/php-interfaces": "^1.1",
@@ -24,7 +24,7 @@
         "phpstan/phpstan": "^0.12.19",
         "otis22/php-coverage-checker": "^1.2",
         "sensiolabs/security-checker": "^6.0",
-        "wapmorgan/php-code-fixer": "^2.0",
+        "wapmorgan/php-deprecation-detector": "^2.0",
         "php-coveralls/php-coveralls": "^2.2",
         "phpunit/phpcov": "^8.0"
     },
@@ -44,8 +44,8 @@
     "scripts": {
         "unit": "vendor/bin/phpunit --testsuite main && vendor/bin/php-coverage-checker build/logs/clover.xml 1",
         "integration": "vendor/bin/phpunit --testsuite integration",
-        "check-static-analyze": "vendor/bin/phpstan analyse --level=max src tests",
-        "check-style": "vendor/bin/phpcs --ignore-annotations --standard=PSR12 src tests && vendor/bin/phpcf tests src",
+        "check-static-analyze": "vendor/bin/phpstan analyse --level=max src tests && vendor/bin/phpdd tests src",
+        "check-style": "vendor/bin/phpcs --ignore-annotations --standard=PSR12 src tests",
         "security": "vendor/bin/security-checker security:check",
         "check-all": "composer validate && composer security && composer check-style && composer check-static-analyze && composer unit"
     }
