@@ -12,9 +12,6 @@ build:
 exec:
 	docker run --rm -ti -v $(CURDIR):/app:rw -w /app $(base_dir):$(php_version) sh
 
-security:
-	$(docker) composer security
-
 install:
 	$(docker) composer install
 
@@ -34,6 +31,6 @@ unit:
 integration:
 	docker run  --env-file=.env --rm -v $(CURDIR):/app -w /app $(base_dir):$(php_version) composer integration
 
-all: build install security style static-analyze unit
+all: build install style static-analyze unit
 
 .PHONY: build
