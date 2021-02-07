@@ -67,31 +67,4 @@ final class AllRecordsTest extends TestCase
         } while (count($result) < $response['data']['totalCount']);
         $this->assertTrue(count($result) == $response['data']['totalCount']);
     }
-
-   /* private function request(Client $client, string $model, int $page): array
-    {
-        echo "do request for page $page \n";
-        $limit = 100;
-        $response = $client->request(
-            'GET',
-            uri($model)->asString(),
-            [
-                'headers' => byApiKey(
-                    strval(
-                        getenv("TEST_API_KEY")
-                    )
-                )->asKeyValue(),
-                'query' => [
-                    'limit' => $limit,
-                    'offset' => $page * $limit
-                ]
-            ]
-        );
-        return json_decode(
-            strval(
-                $response->getBody()
-            ),
-            true
-        );
-    }*/
 }
