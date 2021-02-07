@@ -31,6 +31,9 @@ unit:
 integration:
 	docker run  --env-file=.env --rm -v $(CURDIR):/app -w /app $(base_dir):$(php_version) composer integration
 
+integration_one:
+	docker run  --env-file=.env --rm -v $(CURDIR):/app -w /app $(base_dir):$(php_version) vendor/bin/phpunit --testsuite integration --filter $(filter-out $@,$(MAKECMDGOALS))
+
 all: build install style static-analyze unit
 
 .PHONY: build

@@ -19,6 +19,7 @@ Vetmanager - CRM for veterinary with REST API. vetmanager-rest-api is library wi
 1. Model name validation in uri()
 1. Simplify apiKey and token authorization
 1. Sorting, Filtering and others 
+1. Get all sorted and filtered records from model
 
 ```php
 use GuzzleHttp\Client;
@@ -54,6 +55,7 @@ composer require otis22/vetmanager-rest-api
     1. [Full available filter list](#full-filter-list)
     1. [Sorts example](#how-to-use-sorts)
     1. [Both example](#how-to-use-both-sorts-and-filters)
+* [How to get all records](#how-to-get-all-records)  
 
 ### Usage for auth
 #### Api key auth
@@ -231,6 +233,39 @@ $client->request(
     ]
 ); 
 ```
+
+### How to get all records 
+
+```php
+$paged =  PagedQuery::forGettingAll(
+    new Query(
+        // Sorts Required!
+    )
+);
+$result = [];
+do {
+    $response = json_decode(
+        strval(
+            $client->request(
+                'GET',
+                uri('invoice')->asString(),
+                [
+                    'headers' => $headers->asKeyValue(),
+                    'query' => $paged->asKeyValue()
+                ]
+            )->getBody()
+        ),
+        true
+    );
+    $paged = $paged->next();
+    $result = array_merge(
+        $response['data']['invoice'],
+        $result
+    );
+} while (count($result) < $response['data']['totalCount']);
+
+```
+
 
 ## Contributing
 

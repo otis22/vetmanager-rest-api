@@ -396,24 +396,22 @@
         },
         {
             "name": "otis22/php-interfaces",
-            "version": "1.1",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/otis22/php-interfaces.git",
-                "reference": "f7d47c3322a53d8812ea6d066b51c6c4dda0b15a"
+                "reference": "2fe0c936f6729911f3e02878bc8af83966c10e4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/otis22/php-interfaces/zipball/f7d47c3322a53d8812ea6d066b51c6c4dda0b15a",
-                "reference": "f7d47c3322a53d8812ea6d066b51c6c4dda0b15a",
+                "url": "https://api.github.com/repos/otis22/php-interfaces/zipball/2fe0c936f6729911f3e02878bc8af83966c10e4e",
+                "reference": "2fe0c936f6729911f3e02878bc8af83966c10e4e",
                 "shasum": ""
             },
             "require-dev": {
                 "phpstan/phpstan": "^0.12.19",
                 "phpunit/phpunit": "^9.1",
-                "sensiolabs/security-checker": "^6.0",
-                "squizlabs/php_codesniffer": "3.*",
-                "wapmorgan/php-code-fixer": "^2.0"
+                "squizlabs/php_codesniffer": "3.*"
             },
             "type": "library",
             "autoload": {
@@ -434,9 +432,9 @@
             "description": "Interfaces for OOP php projects",
             "support": {
                 "issues": "https://github.com/otis22/php-interfaces/issues",
-                "source": "https://github.com/otis22/php-interfaces/tree/1.1"
+                "source": "https://github.com/otis22/php-interfaces/tree/1.1.1"
             },
-            "time": "2020-12-02T15:21:30+00:00"
+            "time": "2021-02-07T19:00:13+00:00"
         },
         {
             "name": "otis22/vetmanager-token",
@@ -1340,16 +1338,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.72",
+            "version": "0.12.73",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "ae32fb1c5e97979f424c3ccec4ee435a35754769"
+                "reference": "a08c2759d132b4247b32e03066401c3232ad99b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/ae32fb1c5e97979f424c3ccec4ee435a35754769",
-                "reference": "ae32fb1c5e97979f424c3ccec4ee435a35754769",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/a08c2759d132b4247b32e03066401c3232ad99b7",
+                "reference": "a08c2759d132b4247b32e03066401c3232ad99b7",
                 "shasum": ""
             },
             "require": {
@@ -1380,7 +1378,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.72"
+                "source": "https://github.com/phpstan/phpstan/tree/0.12.73"
             },
             "funding": [
                 {
@@ -1396,7 +1394,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-06T18:34:03+00:00"
+            "time": "2021-02-07T16:26:54+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
