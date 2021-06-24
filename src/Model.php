@@ -28,6 +28,7 @@ final class Model implements Stringify
         'clientPhone',
         'clinics',
         'clinicsToClients',
+        'clinicsToUsers',
         'clinicsToDocuments',
         'closingOfInvoices',
         'comboManualItem',
