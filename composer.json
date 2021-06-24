@@ -13,7 +13,6 @@
         "elegant-bro/interfaces": "^1.1",
         "otis22/php-interfaces": "^1.1",
         "elegant-bro/arrayee": "^0.1.0",
-        "otis22/vetmanager-url": "^0.3.0",
         "otis22/vetmanager-token": "^0.2.0",
         "elegant-bro/stringify": "^0.3.1"
     },
@@ -25,7 +24,8 @@
         "wapmorgan/php-deprecation-detector": "^2.0",
         "php-coveralls/php-coveralls": "^2.2",
         "phpunit/phpcov": "^8.0",
-        "guzzlehttp/guzzle": "^7.1"
+        "guzzlehttp/guzzle": "^7.1",
+        "otis22/vetmanager-url": "^0.3.0"
     },
     "autoload": {
         "psr-4": {
