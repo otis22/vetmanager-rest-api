@@ -35,7 +35,7 @@ $request = $client->request(
 );
 ```
 
-**Warning!** function `url` require "otis22/vetmanager-url" package. 
+**Warning!** function `url` requires "otis22/vetmanager-url" package. 
 
 ## Installation
 
