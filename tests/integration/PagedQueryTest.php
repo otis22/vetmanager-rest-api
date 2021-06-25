@@ -16,7 +16,7 @@ use function Otis22\VetmanagerRestApi\byApiKey;
 use function Otis22\VetmanagerRestApi\uri;
 use function Otis22\VetmanagerUrl\url;
 
-final class AllRecordsTest extends TestCase
+final class PagedQueryTest extends TestCase
 {
     public function testAllRecords(): void
     {
@@ -30,7 +30,7 @@ final class AllRecordsTest extends TestCase
                 )->asString()
             ]
         );
-        $paged =  PagedQuery::forGettingAll(
+        $paged = PagedQuery::forGettingAll(
             new Query(
                 new Sorts(
                     new AscBy(
@@ -66,5 +66,46 @@ final class AllRecordsTest extends TestCase
             );
         } while (count($result) < $response['data']['totalCount']);
         $this->assertTrue(count($result) == $response['data']['totalCount']);
+    }
+
+    public function testTop1Clients(): void
+    {
+        $client = new Client(
+            [
+                'base_uri' => url(
+                    strval(
+                        getenv('TEST_DOMAIN_NAME')
+                    )
+                )->asString()
+            ]
+        );
+        $top1 = PagedQuery::forGettingTop(
+            new Query(
+                new Sorts(
+                    new AscBy(
+                        new Property('id')
+                    )
+                )
+            ),
+            1
+        );
+        $response = json_decode(
+            strval(
+                $client->request(
+                    'GET',
+                    uri('client')->asString(),
+                    [
+                        'headers' => byApiKey(
+                            strval(
+                                getenv("TEST_API_KEY")
+                            )
+                        )->asKeyValue(),
+                        'query' => $top1->asKeyValue()
+                    ]
+                )->getBody()
+            ),
+            true
+        );
+        $this->assertEquals(count($response['data']['client']), 1);
     }
 }

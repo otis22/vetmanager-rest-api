@@ -45,6 +45,16 @@ final class PagedQuery implements KeyValue
 
     /**
      * @param Query $query
+     * @param int $limit
+     * @return PagedQuery
+     */
+    public static function forGettingTop(Query $query, int $limit): PagedQuery
+    {
+        return new PagedQuery($query, $limit, 0);
+    }
+
+    /**
+     * @param Query $query
      * @param int $currentPage
      * @return PagedQuery
      */

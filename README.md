@@ -58,6 +58,7 @@ composer require otis22/vetmanager-rest-api
     1. [Sorts example](#how-to-use-sorts)
     1. [Both example](#how-to-use-both-sorts-and-filters)
 * [How to get all records](#how-to-get-all-records)  
+* [How to get top n records](#how-to-get-top-n-records)
 
 ### Usage for auth
 #### Api key auth
@@ -266,6 +267,30 @@ do {
     );
 } while (count($result) < $response['data']['totalCount']);
 
+```
+
+### How to get top n records
+
+```php
+$top1 =  PagedQuery::forGettingTop(
+    new Query(
+        // Sorts Required!
+    ),
+    1
+);
+$response = json_decode(
+    strval(
+        $client->request(
+            'GET',
+            uri('invoice')->asString(),
+            [
+                'headers' => $headers->asKeyValue(),
+                'query' => $top1->asKeyValue()
+            ]
+        )->getBody()
+    ),
+    true
+);
 ```
 
 

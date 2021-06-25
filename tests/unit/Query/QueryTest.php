@@ -36,4 +36,11 @@ class QueryTest extends TestCase
             $query->asKeyValue()
         );
     }
+    public function testEmptyQuery(): void
+    {
+        $this->assertEquals(
+            (new Query())->asKeyValue(),
+            []
+        );
+    }
 }

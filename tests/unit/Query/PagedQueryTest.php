@@ -62,4 +62,21 @@ class PagedQueryTest extends TestCase
                 ->asKeyValue()['offset']
         );
     }
+
+    public function testGettingTopWillEqualsLimit(): void
+    {
+        $this->assertEquals(
+            1,
+            PagedQuery::forGettingTop(
+                new Query(
+                    new Sorts(
+                        new AscBy(
+                            new Property('id')
+                        )
+                    )
+                ),
+                1
+            )->asKeyValue()['limit']
+        );
+    }
 }
