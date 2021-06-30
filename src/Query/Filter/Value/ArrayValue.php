@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Otis22\VetmanagerRestApi\Query\Filter\Value;
 
-use _HumbugBoxbde535255540\Nette\Neon\Exception;
 use ElegantBro\Stringify\Json\JsonEncoded;
 use Otis22\VetmanagerRestApi\Query\Filter\Value;
 
