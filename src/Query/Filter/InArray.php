@@ -40,7 +40,10 @@ final class InArray implements Filter
     public function asKeyValue(): array
     {
         $filterSettings['property'] = $this->property->asString();
-        $filterSettings['value'] = $this->value->asString();
+        $filterSettings['value'] = json_decode(
+            $this->value->asString(),
+            true
+        );
         $filterSettings['operator'] = $this->operator;
         return $filterSettings;
     }

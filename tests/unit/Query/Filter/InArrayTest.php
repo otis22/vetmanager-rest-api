@@ -17,7 +17,7 @@ class InArrayTest extends TestCase
             [
                 'operator' => 'in',
                 'property' => 'test',
-                'value' => '[1,2,3]'
+                'value' => [1,2,3]
             ],
             (
                 new InArray(
