@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "php": ">=7.3",
+        "php": ">=7.3 || ^8.0",
         "ext-json": "*",
         "elegant-bro/interfaces": "^1.1",
         "otis22/php-interfaces": "^1.1",
@@ -23,9 +23,10 @@
         "phpstan/phpstan": "^0.12.19",
         "otis22/php-coverage-checker": "^1.2",
         "wapmorgan/php-deprecation-detector": "^2.0",
-        "php-coveralls/php-coveralls": "^2.2",
+        "php-coveralls/php-coveralls": "1.0.1",
         "phpunit/phpcov": "^8.0",
-        "guzzlehttp/guzzle": "^7.1",
+        "guzzlehttp/guzzle": "^7.0",
+        "symfony/deprecation-contracts": "^2.2",
         "otis22/vetmanager-url": "^0.3.0"
     },
     "autoload": {
