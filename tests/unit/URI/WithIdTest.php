@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 class WithIdTest extends TestCase
 {
-
     public function testAsString(): void
     {
         $this->assertTrue(

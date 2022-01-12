@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
 
 class ByApiKeyTest extends TestCase
 {
-
     public function testAsKeyValue(): void
     {
         $this->assertTrue(

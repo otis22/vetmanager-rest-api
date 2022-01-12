@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 class DescByTest extends TestCase
 {
-
     public function testAsKeyValue(): void
     {
         $this->assertEquals(

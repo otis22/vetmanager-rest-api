@@ -10,7 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class ByTokenTest extends TestCase
 {
-
     public function testAsKeyValue(): void
     {
         $this->assertTrue(

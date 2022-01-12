@@ -12,7 +12,6 @@ use PHPUnit\Framework\TestCase;
 
 class FiltersTest extends TestCase
 {
-
     public function testAsArray(): void
     {
         $this->assertEquals(
