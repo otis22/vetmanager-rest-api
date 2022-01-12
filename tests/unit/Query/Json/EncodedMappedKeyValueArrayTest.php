@@ -10,7 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class EncodedMappedKeyValueArrayTest extends TestCase
 {
-
     public function testAsString(): void
     {
         $this->assertEquals(

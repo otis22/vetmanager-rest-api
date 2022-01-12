@@ -10,7 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class NotEqualToTest extends TestCase
 {
-
     public function testAsKeyValue(): void
     {
         $this->assertEquals(

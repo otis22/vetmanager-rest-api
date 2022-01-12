@@ -8,5 +8,4 @@ use Otis22\PhpInterfaces\KeyValue;
 
 interface SortBy extends KeyValue
 {
-
 }

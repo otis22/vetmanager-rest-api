@@ -10,7 +10,6 @@ use PHPUnit\Framework\TestCase;
 
 class SortsTest extends TestCase
 {
-
     public function testAsArray(): void
     {
         $this->assertEquals(
