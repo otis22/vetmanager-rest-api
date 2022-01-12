@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ede4f5f0afa313ba2b37a840db6af03e",
+    "content-hash": "e75a034130210732dab2d73db295b520",
     "packages": [
         {
             "name": "elegant-bro/arrayee",
@@ -4510,6 +4510,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
+        "php": ">=7.3",
         "ext-json": "*"
     },
     "platform-dev": [],

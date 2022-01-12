@@ -9,6 +9,7 @@
         }
     ],
     "require": {
+        "php": ">=7.3",
         "ext-json": "*",
         "elegant-bro/interfaces": "^1.1",
         "otis22/php-interfaces": "^1.1",
