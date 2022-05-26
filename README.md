@@ -47,8 +47,9 @@ composer require otis22/vetmanager-rest-api
 
 * [For auth](#usage-for-auth)
     1. [Api key auth](#api-key-auth)
-    1. [With custom timezone](#with-custom-timezone)
-    1. [Token auth](#token-auth)
+    2. [With custom timezone](#with-custom-timezone)
+    3. [Token auth](#token-auth)
+    4. [Service API key auth](#service-api-key-auth)
 * [For create valid URI](#usage-for-create-valid-uri)
     1. [Only model](#only-model)
     1. [Model with particular id](#model-with-particular-id)
@@ -126,6 +127,32 @@ or with function
 $authHeaders = Otis22\VetmanagerRestApi\byToken('myapp', 'mytoken');
 # use this after ['headers' => $authHeaders->asKeyValue()]
 ```
+
+### Service API key auth
+
+```php
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+
+$authHeaders = new Otis22\VetmanagerRestApi\Headers\WithAuth(
+    new \Otis22\VetmanagerRestApi\Headers\Auth\ByServiceApiKey(
+        new \Otis22\VetmanagerRestApi\Headers\Auth\ServiceName('name')
+        new \Otis22\VetmanagerRestApi\Headers\Auth\ApiKey('key')
+    )
+);
+
+$client->request(
+    'GET',
+    '/rest/api/user/1',
+    ['headers' => $authHeaders->asKeyValue()]
+); 
+```
+or with function
+```php
+$authHeaders = Otis22\VetmanagerRestApi\byServiceApiKey('service', 'api key');
+# use this after ['headers' => $authHeaders->asKeyValue()]
+```
+
+
 
 ### Usage for create valid URI
 #### Only model

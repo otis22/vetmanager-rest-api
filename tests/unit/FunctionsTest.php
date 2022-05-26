@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Otis22\VetmanagerRestApi;
 
-use Otis22\VetmanagerRestApi\Headers;
 use PHPUnit\Framework\TestCase;
 
 use function Otis22\VetmanagerRestApi\byApiKey;
@@ -15,17 +14,25 @@ class FunctionsTest extends TestCase
 {
     public function testByApiKey(): void
     {
-        $this->assertInstanceOf(
-            Headers::class,
-            byApiKey('test')
+        $this->assertArrayHasKey(
+            'X-REST-API-KEY',
+            byApiKey('test')->asKeyValue()
         );
     }
 
     public function testByToken(): void
     {
-        $this->assertInstanceOf(
-            Headers::class,
-            byToken('app_name', 'token')
+        $this->assertArrayHasKey(
+            'X-APP-NAME',
+            byToken('app_name', 'token')->asKeyValue()
+        );
+    }
+
+    public function testByServiceName(): void
+    {
+        $this->assertArrayHasKey(
+            "X-SERVICE-NAME",
+            byServiceApiKey('name', 'key')->asKeyValue()
         );
     }
 

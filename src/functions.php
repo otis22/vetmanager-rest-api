@@ -38,6 +38,16 @@ function byApiKey(string $apiKey): Headers
     );
 }
 
+function byServiceApiKey(string $serviceName, string $apiKey): Headers
+{
+    return new WithAuth(
+        new Auth\ByServiceApiKey(
+            new Auth\ServiceName($serviceName),
+            new Auth\ApiKey($apiKey)
+        )
+    );
+}
+
 /**
  * Function return uri by model name and id entity
  * @param string $model
