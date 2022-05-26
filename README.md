@@ -54,11 +54,12 @@ composer require otis22/vetmanager-rest-api
     1. [Model with particular id](#model-with-particular-id)
 * [For filtering and sorting data](#usage-for-filtering-and-sorting)  
     1. [Filter example](#how-to-use-filters)
-    1. [Full available filter list](#full-filter-list)
-    1. [Sorts example](#how-to-use-sorts)
-    1. [Both example](#how-to-use-both-sorts-and-filters)
+    2. [Full available filter list](#full-filter-list)
+    3. [Sorts example](#how-to-use-sorts)
+    4. [Both example](#how-to-use-both-sorts-and-filters)
 * [How to get all records](#how-to-get-all-records)  
 * [How to get top n records](#how-to-get-top-n-records)
+* [Query Builder](#query-builder)
 
 ### Usage for auth
 #### Api key auth
@@ -292,6 +293,33 @@ $response = json_decode(
     true
 );
 ```
+
+### Query Builder
+
+top(n) - return PagedQuery instance for getting top n records by user filter and sort order.  
+```php
+$top = (new Builder())
+    ->where('client_id', 'in', [1, 2])
+    ->orderBy('id', 'desc')
+    ->top(1);
+```
+
+paginateAll(): return PagedQuery instance for getting all records by user filter and sort order
+```php
+$top = (new Builder())
+    ->where('client_id', 'in', [1, 2])
+    ->orderBy('id', 'desc')
+    ->paginateAll();
+```
+
+paginate(limit, offset): return PagedQuery instance for getting records with custom limit and offset by user filter and sort order
+```php
+$top = (new Builder())
+    ->where('client_id', 'in', [1, 2])
+    ->orderBy('id', 'desc')
+    ->paginateAll();
+```
+
 
 
 ## Contributing
