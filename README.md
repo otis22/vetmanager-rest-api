@@ -306,7 +306,7 @@ $top = (new Builder())
 
 paginateAll(): return PagedQuery instance for getting all records by user filter and sort order
 ```php
-$top = (new Builder())
+$paginateAll = (new Builder())
     ->where('client_id', 'in', [1, 2])
     ->orderBy('id', 'desc')
     ->paginateAll();
@@ -317,7 +317,7 @@ paginate(limit, offset): return PagedQuery instance for getting records with cus
 $top = (new Builder())
     ->where('client_id', 'in', [1, 2])
     ->orderBy('id', 'desc')
-    ->paginateAll();
+    ->paginate(10, 20);
 ```
 
 
