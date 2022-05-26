@@ -8,8 +8,14 @@ use Otis22\VetmanagerRestApi\Headers\Auth;
 
 final class ByServiceApiKey implements Auth
 {
-    private ServiceName $serviceName;
-    private ApiKey $apiKey;
+    /**
+     * @var ServiceName
+     */
+    private $serviceName;
+    /**
+     * @var ApiKey
+     */
+    private $apiKey;
 
     /**
      * @param ServiceName $serviceName

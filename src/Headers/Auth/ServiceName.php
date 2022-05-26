@@ -8,7 +8,10 @@ use ElegantBro\Interfaces\Stringify;
 
 final class ServiceName implements stringify
 {
-    private string $serviceName;
+    /**
+     * @var string
+     */
+    private $serviceName;
 
     /**
      * @param string $serviceName
