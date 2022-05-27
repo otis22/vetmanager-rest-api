@@ -9,7 +9,7 @@ use Otis22\VetmanagerRestApi\Headers\WithAuth;
 use Otis22\VetmanagerRestApi\URI;
 
 /**
- * Function for creating auth headers <code>byToken($apiKey)->asKeyValue()</code>
+ * Function for creating auth headers <code>byToken($appName, $token)->asKeyValue()</code>
  * @param string $appName
  * @param string $token
  * @return Headers
@@ -25,7 +25,7 @@ function byToken(string $appName, string $token): Headers
 }
 
 /**
- * Function for creating auth headers <code>byToken($apiKey)->asKeyValue()</code>
+ * Function for creating auth headers <code>byApiKey($apiKey)->asKeyValue()</code>
  * @param string $apiKey
  * @return Headers
  */
@@ -38,6 +38,12 @@ function byApiKey(string $apiKey): Headers
     );
 }
 
+/**
+ * Function for creating auth headers for services by api key <code>byApiKey($serviceName, $apiKey)->asKeyValue()</code>
+ * @param string $serviceName
+ * @param string $apiKey
+ * @return Headers
+ */
 function byServiceApiKey(string $serviceName, string $apiKey): Headers
 {
     return new WithAuth(
