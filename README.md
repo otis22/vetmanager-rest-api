@@ -341,7 +341,7 @@ $paginateAll = (new Builder())
 
 paginate(limit, offset): return PagedQuery instance for getting records with custom limit and offset by user filter and sort order
 ```php
-$top = (new Builder())
+$paginate = (new Builder())
     ->where('client_id', 'in', [1, 2])
     ->orderBy('id', 'desc')
     ->paginate(10, 20);
