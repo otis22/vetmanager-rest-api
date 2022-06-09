@@ -25,8 +25,8 @@ final class AuthTest extends TestCase
             )->success
         );
     }
-// TODO: Find a way fot test it before feature will be released.
-/*    public function testServiceApiKey(): void
+
+    public function testServiceApiKey(): void
     {
         $this->assertTrue(
             $this->jsonTestResponse(
@@ -37,7 +37,7 @@ final class AuthTest extends TestCase
             )->success
         );
     }
-*/
+
     public function jsonTestResponse(Headers $auth): \stdClass
     {
         $client = new Client(
@@ -49,7 +49,7 @@ final class AuthTest extends TestCase
         );
         $request = $client->request(
             'GET',
-            uri('clinics')->asString(),
+            uri('client')->asString(),
             [
                 'headers' => $auth->asKeyValue()
             ]
