@@ -21,17 +21,32 @@ Vetmanager - CRM for veterinary with REST API. vetmanager-rest-api is library wi
 1. Sorting, Filtering and others 
 1. Get all sorted and filtered records from model
 
+** Example: Get latest invoice for client id=1 or id=2
+
 ```php
 use GuzzleHttp\Client;
 use function Otis22\VetmanagerUrl\url;
 use function Otis22\VetmanagerRestApi\uri;
 use function Otis22\VetmanagerRestApi\byApiKey;
+use Otis22\VetmanagerRestApi\Query\Builder;
 
-$client = new Client(['base_uri' => url("myclinic")->asString()]);
-$request = $client->request(
+
+$client = new Client([
+  'base_uri' => url("myclinic")->asString()
+]);
+
+$top = (new Builder())
+    ->where('client_id', 'in', [1, 2])
+    ->orderBy('invoice_date', 'desc')
+    ->top(1);
+
+$response = $client->request(
     'GET',
     uri("invoice")->asString(),
-    ['headers' => byApiKey("myapikey")->asKeyValue()]
+    [
+        'headers' => byApiKey("myapikey")->asKeyValue(),
+        'query' => $top->asKeyValue()
+    ]
 );
 ```
 

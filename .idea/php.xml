@@ -74,7 +74,6 @@
       <path value="$PROJECT_DIR$/vendor/otis22/vetmanager-token" />
       <path value="$PROJECT_DIR$/vendor/elegant-bro/stringify" />
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
-      <path value="$PROJECT_DIR$/vendor/wapmorgan/php-deprecation-detector" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
       <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
       <path value="$PROJECT_DIR$/vendor/guzzle/guzzle" />

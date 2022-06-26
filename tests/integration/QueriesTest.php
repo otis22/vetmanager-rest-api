@@ -22,14 +22,16 @@ use function getenv;
 
 class QueriesTest extends TestCase
 {
+    /**
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \JsonException
+     */
     public function testInvoiceWithNotInArrayFilter(): void
     {
         $client = new Client(
             [
                 'base_uri' => url(
-                    strval(
-                        getenv('TEST_DOMAIN_NAME')
-                    )
+                    (string)getenv('TEST_DOMAIN_NAME')
                 )->asString()
             ]
         );
@@ -38,9 +40,7 @@ class QueriesTest extends TestCase
             uri('invoice')->asString(),
             [
                 'headers' => byApiKey(
-                    strval(
-                        getenv("TEST_API_KEY")
-                    )
+                    (string)getenv("TEST_API_KEY")
                 )->asKeyValue(),
                 'query' => PagedQuery::forGettingTop(
                     new Query(
@@ -61,11 +61,15 @@ class QueriesTest extends TestCase
             ]
         );
         $json = json_decode(
-            strval(
-                $request->getBody()
-            )
+            (string)$request->getBody(),
+            false,
+            512,
+            JSON_THROW_ON_ERROR
         );
-        $this->assertEquals($json->data->invoice[0]->status, 'deleted');
+        $this->assertEquals(
+            'deleted',
+            $json->data->invoice[0]->status
+        );
     }
 
     public function testInvoiceWithInArrayFilter(): void
@@ -73,9 +77,7 @@ class QueriesTest extends TestCase
         $client = new Client(
             [
                 'base_uri' => url(
-                    strval(
-                        getenv('TEST_DOMAIN_NAME')
-                    )
+                    (string)getenv('TEST_DOMAIN_NAME')
                 )->asString()
             ]
         );
@@ -84,9 +86,7 @@ class QueriesTest extends TestCase
             uri('invoice')->asString(),
             [
                 'headers' => byApiKey(
-                    strval(
-                        getenv("TEST_API_KEY")
-                    )
+                    (string)getenv("TEST_API_KEY")
                 )->asKeyValue(),
                 'query' => PagedQuery::forGettingTop(
                     new Query(
@@ -107,15 +107,14 @@ class QueriesTest extends TestCase
             ]
         );
         $json = json_decode(
-            strval(
-                $request->getBody()
-            )
+            (string)$request->getBody(),
+            false,
+            512,
+            JSON_THROW_ON_ERROR
         );
-        $this->assertTrue(
-            in_array(
-                $json->data->invoice[0]->status,
-                ['exec', 'save']
-            )
+        $this->assertContains(
+            $json->data->invoice[0]->status,
+            ['exec', 'save']
         );
     }
 }
