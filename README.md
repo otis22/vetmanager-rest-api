@@ -9,7 +9,7 @@ Vetmanager - CRM for veterinary with REST API. vetmanager-rest-api is library wi
 
 [vetmanager.ru](https://vetmanager.ru/)
 
-[vetmanager REST API Docs](https://vetmanager.ru/knowledgebase/rest-api-osnovnaya-informatsia)
+[vetmanager REST API Docs](https://help.vetmanager.cloud/article/3029)
 
 [vetmanager REST API in Postman](https://god.postman.co/run-collection/64d692ca1ea129218ccb)
 
