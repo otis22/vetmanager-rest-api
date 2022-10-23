@@ -49,7 +49,7 @@ final class AuthTest extends TestCase
         );
         $request = $client->request(
             'GET',
-            uri('client')->asString(),
+            uri('clinics')->asString(),
             [
                 'headers' => $auth->asKeyValue()
             ]
