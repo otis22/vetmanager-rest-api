@@ -82,23 +82,23 @@ final class Builder
             throw new \InvalidArgumentException('Vetmanager api does not work with null values');
         }
 
-        if ($operator === '=') {
+        if ($operator === '=' || $operator === EqualTo::class) {
             $this->filters[] = new EqualTo(new Property($name), new StringValue($value));
-        } elseif ($operator === 'in') {
+        } elseif ($operator === 'in' || $operator === InArray::class) {
             $this->filters[] = new InArray(new Property($name), new ArrayValue($value));
-        } elseif ($operator === '<=') {
+        } elseif ($operator === '<=' || $operator === LessOrEqualThan::class) {
             $this->filters[] = new LessOrEqualThan(new Property($name), new StringValue($value));
-        } elseif ($operator === '<') {
+        } elseif ($operator === '<' || $operator === LessThan::class) {
             $this->filters[] = new LessThan(new Property($name), new StringValue($value));
-        } elseif ($operator === 'like') {
+        } elseif ($operator === 'like' || $operator === Like::class) {
             $this->filters[] = new Like(new Property($name), new StringValue($value));
-        } elseif ($operator === '>=') {
+        } elseif ($operator === '>=' || $operator === MoreOrEqualThan::class) {
             $this->filters[] = new MoreOrEqualThan(new Property($name), new StringValue($value));
-        } elseif ($operator === '>') {
+        } elseif ($operator === '>' || $operator === MoreThan::class) {
             $this->filters[] = new MoreThan(new Property($name), new StringValue($value));
-        } elseif ($operator === '!=' or $operator === '<>') {
+        } elseif ($operator === '!=' || $operator === '<>' || $operator === NotEqualTo::class) {
             $this->filters[] = new NotEqualTo(new Property($name), new StringValue($value));
-        } elseif ($operator === 'not in') {
+        } elseif ($operator === 'not in' || $operator === NotInArray::class) {
             $this->filters[] = new NotInArray(new Property($name), new ArrayValue($value));
         } else {
             throw new \InvalidArgumentException('Invalid operator: ' . $operator);

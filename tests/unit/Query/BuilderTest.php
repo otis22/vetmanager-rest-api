@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Otis22\VetmanagerRestApi\Query;
 
+use Otis22\VetmanagerRestApi\Query\Filter\EqualTo;
+use Otis22\VetmanagerRestApi\Query\Filter\InArray;
 use PHPUnit\Framework\TestCase;
 
 class BuilderTest extends TestCase
@@ -63,10 +65,43 @@ class BuilderTest extends TestCase
         );
     }
 
+    public function testWhereClientIdEqualToByClassNameTo2(): void
+    {
+        $top = (new Builder())
+            ->where('client_id', EqualTo::class, '2')
+            ->top(1);
+        $this->assertEquals(
+            [
+                'sort' => '[{"property":"id","direction":"ASC"}]',
+                'filter' => '[{"property":"client_id","value":"2"}]',
+                'limit' => 1,
+                'offset' => 0
+            ],
+            $top->asKeyValue()
+        );
+    }
+
+
     public function testWhereClientIdInList1Or2(): void
     {
         $top = (new Builder())
             ->where('client_id', 'in', [1, 2])
+            ->top(1);
+        $this->assertEquals(
+            [
+                'sort' => '[{"property":"id","direction":"ASC"}]',
+                'filter' => '[{"property":"client_id","value":[1,2],"operator":"in"}]',
+                'limit' => 1,
+                'offset' => 0
+            ],
+            $top->asKeyValue()
+        );
+    }
+
+    public function testWhereClientIdInByClassNameList1Or2(): void
+    {
+        $top = (new Builder())
+            ->where('client_id', InArray::class, [1, 2])
             ->top(1);
         $this->assertEquals(
             [

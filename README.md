@@ -393,6 +393,14 @@ $paginate = (new Builder())
     ->paginate(10, 20);
 ```
 
+You can use [filter class](#full-filter-list) string operator instead.
+```php
+use Otis22\VetmanagerRestApi\Query\Filter;
+
+(new Builder())
+    ->where('client_id', Filter\InArray::class, [1, 2])
+    ->where('pet_id', Filter\NotEqualTo::class, 5)
+```
 
 
 ## Contributing
