@@ -81,7 +81,7 @@ final class PagedQuery implements KeyValue
     public function asKeyValue(): array
     {
         $query = $this->queryWithPageData();
-        if (!isset($query['sort'])) {
+        if (!isset($query['sort']) || $query['sort'] == '[]') {
             throw new \Exception("Query must contains sort key for correct pagination work");
         }
         return $query;

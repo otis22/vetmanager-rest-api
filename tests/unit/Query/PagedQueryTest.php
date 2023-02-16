@@ -24,6 +24,12 @@ class PagedQueryTest extends TestCase
         PagedQuery::forGettingAll(new Query())->asKeyValue();
     }
 
+    public function testSortingAndNotSortRequired(): void
+    {
+        $this->expectException(\Exception::class);
+        PagedQuery::forGettingAll(new Query(new Sorts()))->asKeyValue();
+    }
+
     public function testZeroOffsetForFirstPage(): void
     {
         $this->assertEquals(

@@ -30,7 +30,6 @@ use function Otis22\VetmanagerRestApi\uri;
 use function Otis22\VetmanagerRestApi\byApiKey;
 use Otis22\VetmanagerRestApi\Query\Builder;
 
-
 $client = new Client([
   'base_uri' => url("myclinic")->asString()
 ]);
@@ -79,12 +78,16 @@ composer require otis22/vetmanager-rest-api
 
 ### Usage for auth
 #### Api key auth
+
 ```php
+use Otis22\VetmanagerRestApi\Headers;
+use Otis22\VetmanagerRestApi\Headers\Auth\ApiKey;
+
 $client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
 
-$authHeaders = new Otis22\VetmanagerRestApi\Headers\WithAuth(
-    new \Otis22\VetmanagerRestApi\Headers\Auth\ByApiKey(
-        new \Otis22\VetmanagerRestApi\Headers\Auth\ApiKey('test-key')
+$authHeaders = new Headers\WithAuth(
+    new Headers\Auth\ByApiKey(
+        new ApiKey('test-key')
     )
 );
 
@@ -101,17 +104,20 @@ $authHeaders = Otis22\VetmanagerRestApi\byApiKey('test-key');
 ```
 #### With custom timezone
 ```php
-$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+use Otis22\VetmanagerRestApi\Headers;
+use Otis22\VetmanagerRestApi\Headers\Auth\ApiKey;
 
 $myHeaders = [
     'X-REST-TIME-ZONE' => '+02:00'
 ];
-$allHeaders = new Otis22\VetmanagerRestApi\Headers\WithAuthAndParams(
-    new \Otis22\VetmanagerRestApi\Headers\Auth\ByApiKey(
-        new \Otis22\VetmanagerRestApi\Headers\Auth\ApiKey('test-key')
+$allHeaders = new Headers\WithAuthAndParams(
+    new Headers\Auth\ByApiKey(
+        new ApiKey('test-key')
     ),
     $myHeaders  
 );
+
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
 
 $client->request(
     'GET',
@@ -121,14 +127,17 @@ $client->request(
 ```
 #### Token auth
 ```php
-$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+use Otis22\VetmanagerRestApi\Headers;
+use Otis22\VetmanagerToken;
 
-$authHeaders = new Otis22\VetmanagerRestApi\Headers\WithAuth(
-    new \Otis22\VetmanagerRestApi\Headers\Auth\ByToken(
-        new \Otis22\VetmanagerToken\Credentials\AppName("myapp"),
-        new \Otis22\VetmanagerToken\Token\Concrete("mytoken")
+$authHeaders = new Headers\WithAuth(
+    new Headers\Auth\ByToken(
+        new Credentials\AppName("myapp"),
+        new Token\Concrete("mytoken")
     )
 );
+
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
 
 $client->request(
     'GET',
@@ -146,14 +155,18 @@ $authHeaders = Otis22\VetmanagerRestApi\byToken('myapp', 'mytoken');
 ### Service API key auth
 
 ```php
-$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+use Otis22\VetmanagerRestApi\Headers;
+use Otis22\VetmanagerRestApi\Headers\Auth\ServiceName;
+use Otis22\VetmanagerRestApi\Headers\Auth\ApiKey;
 
-$authHeaders = new Otis22\VetmanagerRestApi\Headers\WithAuth(
-    new \Otis22\VetmanagerRestApi\Headers\Auth\ByServiceApiKey(
-        new \Otis22\VetmanagerRestApi\Headers\Auth\ServiceName('name')
-        new \Otis22\VetmanagerRestApi\Headers\Auth\ApiKey('key')
+$authHeaders = new Headers\WithAuth(
+    new Headers\Auth\ByServiceApiKey(
+        new ServiceName('name')
+        new ApiKey('key')
     )
 );
+
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
 
 $client->request(
     'GET',
@@ -172,11 +185,14 @@ $authHeaders = Otis22\VetmanagerRestApi\byServiceApiKey('service', 'api key');
 ### Usage for create valid URI
 #### Only model
 ```php
-$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+use Otis22\VetmanagerRestApi\URI;
+use Otis22\VetmanagerRestApi\Model;
 
-$uri = new \Otis22\VetmanagerRestApi\URI\OnlyModel(
-    new \Otis22\VetmanagerRestApi\Model('invoice')
+$uri = new URI\OnlyModel(
+    new Model('invoice')
 );
+
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
 
 // request to /rest/api/invoice
 $client->request('GET', $uri->asString()); 
@@ -188,12 +204,15 @@ $uriString = \Otis22\VetmanagerRestApi\uri('invoice')->asString();
 
 #### Model with particular id
 ```php
-$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+use Otis22\VetmanagerRestApi\URI;
+use Otis22\VetmanagerRestApi\Model;
 
-$uri = new \Otis22\VetmanagerRestApi\URI\WithId(
-    new \Otis22\VetmanagerRestApi\Model('invoice'),
+$uri = new URI\WithId(
+    new Model('invoice'),
     5
 );
+
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
 
 // request to /rest/api/invoice/5
 $client->request('GET', $uri->asString()); 
@@ -208,15 +227,20 @@ $uriString = \Otis22\VetmanagerRestApi\uri('invoice', 5)->asString();
 #### How to use Filters
 
 ```php
-$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+use Otis22\VetmanagerRestApi\Query\Filters;
+use Otis22\VetmanagerRestApi\Query\Filter\EqualTo;
+use Otis22\VetmanagerRestApi\Model\Property;
+use Otis22\VetmanagerRestApi\Query\Filter\Value\StringValue;
 
-$filters = new \Otis22\VetmanagerRestApi\Query\Filters(
-    new \Otis22\VetmanagerRestApi\Query\Filter\EqualTo(
-        new \Otis22\VetmanagerRestApi\Model\Property('propertyName'),
-        new \Otis22\VetmanagerRestApi\Query\Filter\Value\StringValue('propertyValue')
+$filters = new Filters(
+    new EqualTo(
+        new Property('propertyName'),
+        new StringValue('propertyValue')
     )
     # ... we can use mach more filters new Filters($filterOne, $filterTwo, ... );
 );
+
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
 
 $client->request(
     'GET',
@@ -240,16 +264,21 @@ $client->request(
 
 #### How to use Sorts
 ```php
-$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+use Otis22\VetmanagerRestApi\Query\Sorts;
+use Otis22\VetmanagerRestApi\Query\Sort\AscBy;
+use Otis22\VetmanagerRestApi\Query\Sort\DescBy;
+use Otis22\VetmanagerRestApi\Model\Property;
 
-$sorts = new \Otis22\VetmanagerRestApi\Query\Sorts(
-    new \Otis22\VetmanagerRestApi\Query\Sort\AscBy(
-        new \Otis22\VetmanagerRestApi\Model\Property('propertyName')
+$sorts = new Sorts(
+    new AscBy(
+        new Property('propertyName')
     ), 
-    new \Otis22\VetmanagerRestApi\Query\Sort\DescBy(
-        new \Otis22\VetmanagerRestApi\Model\Property('property2Name')
+    new DescBy(
+        new Property('property2Name')
     )
 );
+
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
 
 $client->request(
     'GET',
@@ -262,13 +291,15 @@ $client->request(
 ```
 #### How to use both Sorts and Filters
 ```php
-$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
+use Otis22\VetmanagerRestApi\Query\Query;
+... 
 
-$query = new \Otis22\VetmanagerRestApi\Query\Query(
-    new \Otis22\VetmanagerRestApi\Query\Filters(),
-    new \Otis22\VetmanagerRestApi\Query\Sorts()
+$query = new Query(
+    new Filters(...),
+    new Sorts(...)
 );
 
+$client = new GuzzleHttp\Client(['base_uri' => 'http://some.vetmanager.ru']);
 
 $client->request(
     'GET',
