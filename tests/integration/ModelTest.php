@@ -12,21 +12,6 @@ use function getenv;
 
 class ModelTest extends TestCase
 {
-    public function testGetInvoice(): void
-    {
-        $this->assertIsModelWorking('invoice');
-    }
-
-    public function testGetClient(): void
-    {
-        $this->assertIsModelWorking('client');
-    }
-
-    public function testGetCity(): void
-    {
-        $this->assertIsModelWorking('city');
-    }
-
     public function testGetAdmission(): void
     {
         $this->assertIsModelWorking('admission');
@@ -52,9 +37,18 @@ class ModelTest extends TestCase
         $this->assertIsModelWorking('cassarashod');
     }
 
+    public function testGetCity(): void
+    {
+        $this->assertIsModelWorking('city');
+    }
+
     public function testGetCityType(): void
     {
         $this->assertIsModelWorking('cityType');
+    }
+    public function testGetClient(): void
+    {
+        $this->assertIsModelWorking('client');
     }
 
     public function testGetClientPhone(): void
@@ -77,6 +71,11 @@ class ModelTest extends TestCase
         $this->assertIsModelWorking('clinicsToDocuments');
     }
 
+    public function testGetClinicsToUsers(): void
+    {
+        $this->assertIsModelWorking('clinicsToUsers');
+    }
+
     public function testGetClosingOfInvoices(): void
     {
         $this->assertIsModelWorking('closingOfInvoices');
@@ -90,6 +89,16 @@ class ModelTest extends TestCase
     public function testGetComboManualName(): void
     {
         $this->assertIsModelWorking('comboManualName');
+    }
+
+    public function testGetDepartmentToDocument(): void
+    {
+        $this->assertIsModelWorking('departmentToDocument');
+    }
+
+    public function testGetDepartments(): void
+    {
+        $this->assertIsModelWorking('departments');
     }
 
     public function testGetDiagnoses(): void
@@ -132,14 +141,19 @@ class ModelTest extends TestCase
         $this->assertIsModelWorking('goodSaleParam');
     }
 
+    public function testGetHospital(): void
+    {
+        $this->assertIsModelWorking('hospital');
+    }
+
     public function testGetHospitalBlock(): void
     {
         $this->assertIsModelWorking('hospitalBlock');
     }
 
-    public function testGetHospital(): void
+    public function testGetInvoice(): void
     {
-        $this->assertIsModelWorking('hospital');
+        $this->assertIsModelWorking('invoice');
     }
 
     public function testGetInvoiceDocument(): void
