@@ -3,23 +3,24 @@
 ![GitHub CI](https://github.com/otis22/vetmanager-rest-api/workflows/CI/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/otis22/vetmanager-rest-api/badge.svg?branch=main)](https://coveralls.io/github/otis22/vetmanager-rest-api?branch=main)
 
+![Vetmanager Logo](https://vetmanager.ru/wp-content/themes/vetmanager/images/headerLogo.svg)
 
-Vetmanager - CRM for veterinary with REST API. vetmanager-rest-api is library will help work with them.
+Vetmanager - veterinary CRM with REST API. vetmanager-rest-api is a library to help working with REST API.
 
 
 [vetmanager.ru](https://vetmanager.ru/)
 
 [vetmanager REST API Docs](https://help.vetmanager.cloud/article/3029)
 
-[vetmanager REST API in Postman](https://god.postman.co/run-collection/64d692ca1ea129218ccb)
+[vetmanager REST API in Postman](https://www.postman.com/vetmanager/workspace/vetmanager-api/collection/23836400-17133b76-0f52-4bb4-8b38-28a64781074e)
 
-## For what?
+## What for?
 
-1. Full url only by domain name (host might to change)
-1. Model name validation in uri()
-1. Simplify apiKey and token authorization
-1. Sorting, Filtering and others 
-1. Get all sorted and filtered records from model
+1. To get full url by providing only domain name (host might change)
+1. To validate model name by function uri()
+1. To simplify apiKey and token authorization
+1. For Sorting, Filtering, etc. 
+1. To get all sorted and filtered records from model
 
 ** Example: Get latest invoice for client id=1 or id=2
 
@@ -182,7 +183,7 @@ $authHeaders = Otis22\VetmanagerRestApi\byServiceApiKey('service', 'api key');
 
 
 
-### Usage for create valid URI
+### Usage example to create valid URI
 #### Only model
 ```php
 use Otis22\VetmanagerRestApi\URI;
@@ -223,7 +224,7 @@ or with function
 $uriString = \Otis22\VetmanagerRestApi\uri('invoice', 5)->asString();
 ```
 
-### Usage for filtering and sorting
+### Usage example for filtering and sorting
 #### How to use Filters
 
 ```php
@@ -405,15 +406,15 @@ use Otis22\VetmanagerRestApi\Query\Filter;
 
 ## Contributing
 
-For run all tests
+To run all tests
 ```shell
 make all
 ```
-or connect to terminal
+To connect to terminal
 ```shell
 make exec
 ```
-*Dafault php version is 8.1*. Use PHP_VERSION= for using custom version. Now is available only 8.0 and 8.1 versions.
+*Default php version is 8.1*. Use PHP_VERSION= to use your version. Only versions 8.0 and 8.1 are available for now.
 ```shell
 make all PHP_VERSION=8.0
 # run both 
