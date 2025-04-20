@@ -18,6 +18,7 @@ use Otis22\VetmanagerRestApi\Query\Filter\Value\ArrayValue;
 use Otis22\VetmanagerRestApi\Query\Filter\Value\StringValue;
 use Otis22\VetmanagerRestApi\Query\Sort\AscBy;
 use Otis22\VetmanagerRestApi\Query\Sort\DescBy;
+use Otis22\VetmanagerRestApi\Utils\PhpVersion;
 
 /**
  * @method self where(string $property, ...$args) $args can be $value, or $operator + $value
@@ -124,6 +125,14 @@ final class Builder
             $params[] = new Sorts(new AscBy(new Property('id')));
         }
         return new Query(... $params);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function asKeyValue(): array
+    {
+        return $this->query()->asKeyValue();
     }
 
     public function paginateAll(): PagedQuery
