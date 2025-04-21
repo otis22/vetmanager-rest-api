@@ -21,7 +21,7 @@ final class ClientFactory
      *
      * @var string|null
      */
-    private static ?string $baseUrl = null;
+    private static $baseUrl = null;
 
     /**
      * Создает новый экземпляр Guzzle HTTP Client.
