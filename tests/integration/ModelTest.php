@@ -4,11 +4,13 @@ namespace Tests\integration;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
+use Otis22\VetmanagerRestApi\Support\ClientFactory;
 
 use function Otis22\VetmanagerUrl\url;
 use function Otis22\VetmanagerRestApi\uri;
 use function Otis22\VetmanagerRestApi\byApiKey;
 use function getenv;
+use function strval;
 
 class ModelTest extends TestCase
 {
@@ -264,15 +266,7 @@ class ModelTest extends TestCase
 
     private function assertIsModelWorking(string $modelName): void
     {
-        $client = new Client(
-            [
-                'base_uri' => url(
-                    strval(
-                        getenv('TEST_DOMAIN_NAME')
-                    )
-                )->asString()
-            ]
-        );
+        $client = ClientFactory::createClient();
         $request = $client->request(
             'GET',
             uri($modelName)->asString(),

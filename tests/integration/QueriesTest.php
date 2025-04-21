@@ -14,11 +14,13 @@ use Otis22\VetmanagerRestApi\Query\PagedQuery;
 use Otis22\VetmanagerRestApi\Query\Sort\DescBy;
 use Otis22\VetmanagerRestApi\Query\Sort\AscBy;
 use Otis22\VetmanagerRestApi\Query\Filter\InArray;
+use Otis22\VetmanagerRestApi\Support\ClientFactory;
 
 use function Otis22\VetmanagerUrl\url;
 use function Otis22\VetmanagerRestApi\uri;
 use function Otis22\VetmanagerRestApi\byApiKey;
 use function getenv;
+use function strval;
 
 class QueriesTest extends TestCase
 {
@@ -28,13 +30,7 @@ class QueriesTest extends TestCase
      */
     public function testInvoiceWithNotInArrayFilter(): void
     {
-        $client = new Client(
-            [
-                'base_uri' => url(
-                    (string)getenv('TEST_DOMAIN_NAME')
-                )->asString()
-            ]
-        );
+        $client = ClientFactory::createClient();
         $request = $client->request(
             'GET',
             uri('invoice')->asString(),
@@ -74,13 +70,7 @@ class QueriesTest extends TestCase
 
     public function testInvoiceWithInArrayFilter(): void
     {
-        $client = new Client(
-            [
-                'base_uri' => url(
-                    (string)getenv('TEST_DOMAIN_NAME')
-                )->asString()
-            ]
-        );
+        $client = ClientFactory::createClient();
         $request = $client->request(
             'GET',
             uri('invoice')->asString(),

@@ -11,25 +11,20 @@ use Otis22\VetmanagerRestApi\Query\Sort\AscBy;
 use Otis22\VetmanagerRestApi\Query\Sorts;
 use Otis22\VetmanagerRestApi\Query\Query;
 use PHPUnit\Framework\TestCase;
+use Otis22\VetmanagerRestApi\Support\ClientFactory;
 
 use function Otis22\VetmanagerRestApi\byApiKey;
 use function Otis22\VetmanagerRestApi\uri;
 use function Otis22\VetmanagerUrl\url;
+use function getenv;
+use function strval;
 
 final class PagedQueryTest extends TestCase
 {
     public function testAllRecords(): void
     {
         $modelWithMultiplePages = 'comboManualItem';
-        $client = new Client(
-            [
-                'base_uri' => url(
-                    strval(
-                        getenv('TEST_DOMAIN_NAME')
-                    )
-                )->asString()
-            ]
-        );
+        $client = ClientFactory::createClient();
         $paged = PagedQuery::forGettingAll(
             new Query(
                 new Sorts(
@@ -70,15 +65,7 @@ final class PagedQueryTest extends TestCase
 
     public function testTop1Clients(): void
     {
-        $client = new Client(
-            [
-                'base_uri' => url(
-                    strval(
-                        getenv('TEST_DOMAIN_NAME')
-                    )
-                )->asString()
-            ]
-        );
+        $client = ClientFactory::createClient();
         $top1 = PagedQuery::forGettingTop(
             new Query(
                 new Sorts(

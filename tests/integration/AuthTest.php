@@ -7,11 +7,12 @@ namespace Otis22\VetmanagerRestApi\integration;
 use GuzzleHttp\Client;
 use Otis22\VetmanagerRestApi\Headers;
 use PHPUnit\Framework\TestCase;
+use Otis22\VetmanagerRestApi\Support\ClientFactory;
 
 use function Otis22\VetmanagerRestApi\byApiKey;
 use function Otis22\VetmanagerRestApi\byServiceApiKey;
 use function Otis22\VetmanagerRestApi\uri;
-use function Otis22\VetmanagerUrl\url;
+use function getenv;
 
 final class AuthTest extends TestCase
 {
@@ -40,13 +41,7 @@ final class AuthTest extends TestCase
 
     public function jsonTestResponse(Headers $auth): \stdClass
     {
-        $client = new Client(
-            [
-                'base_uri' => url(
-                    (string) getenv('TEST_DOMAIN_NAME')
-                )->asString()
-            ]
-        );
+        $client = ClientFactory::createClient();
         $request = $client->request(
             'GET',
             uri('clinics')->asString(),
