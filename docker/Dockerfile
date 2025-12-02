@@ -4,13 +4,19 @@ FROM php:${VERSION}-cli-alpine
 
 WORKDIR /app
 
-RUN apk add --update linux-headers \
-    && apk --no-cache add  icu-libs \
-    && apk --no-cache add icu-data-full \
-    && apk --no-cache add icu-dev \
-    && apk --no-cache add pcre-dev ${PHPIZE_DEPS} \
-    && pecl install xdebug \
-    && apk del pcre-dev ${PHPIZE_DEPS}
+RUN set -eux; \
+    apk add --update linux-headers; \
+    apk --no-cache add icu-libs icu-data-full icu-dev; \
+    apk --no-cache add pcre-dev ${PHPIZE_DEPS}; \
+    PHP_MAJOR="${VERSION%%.*}"; \
+    if [ "${PHP_MAJOR}" -lt 8 ]; then \
+        XDEBUG_PACKAGE="xdebug-3.1.6"; \
+    else \
+        XDEBUG_PACKAGE="xdebug"; \
+    fi; \
+    pecl install "${XDEBUG_PACKAGE}"; \
+    docker-php-ext-enable xdebug; \
+    apk del pcre-dev ${PHPIZE_DEPS}
 
 RUN docker-php-ext-install -j$(nproc) bcmath intl
 
