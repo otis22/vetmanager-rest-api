@@ -26,7 +26,7 @@
         "phpunit/phpcov": "^8.0",
         "guzzlehttp/guzzle": "^7.5",
         "symfony/deprecation-contracts": "^2.5",
-        "otis22/vetmanager-url": "^1.0.1"
+        "otis22/vetmanager-url": "1.0.1 as 0.1.999"
     },
     "autoload": {
         "psr-4": {
