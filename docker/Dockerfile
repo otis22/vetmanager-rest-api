@@ -1,13 +1,17 @@
 ARG VERSION=8.3
 
 FROM php:${VERSION}-cli-alpine
+ARG VERSION
 
 WORKDIR /app
 
 RUN set -eux; \
     apk add --update linux-headers; \
-    apk --no-cache add icu-libs icu-data-full icu-dev; \
+    apk --no-cache add icu-libs icu-dev; \
     apk --no-cache add pcre-dev ${PHPIZE_DEPS}; \
+    if [ "${VERSION}" != "7.3" ]; then \
+        apk --no-cache add icu-data-full; \
+    fi; \
     PHP_MAJOR="${VERSION%%.*}"; \
     if [ "${PHP_MAJOR}" -lt 8 ]; then \
         XDEBUG_PACKAGE="xdebug-3.1.6"; \

@@ -404,41 +404,33 @@ use Otis22\VetmanagerRestApi\Query\Filter;
 ```
 
 
-## Contributing
+## Разработка
 
-To run all tests
+`make all` собирает Docker-образ, устанавливает зависимости, проверяет стиль и
+статический анализ, запускает unit-тесты и проверяет покрытие не ниже 90%.
+Версия PHP по умолчанию в `Makefile` — 8.3. Для другой версии задайте
+`PHP_VERSION`, например `make all PHP_VERSION=8.2`. В CI проверяются версии
+PHP 7.3–8.3 командами Composer. При смене версии PHP используйте чистую
+рабочую копию: локальный `composer.lock` не отслеживается Git и может
+содержать зависимости, несовместимые с другой версией PHP.
+
 ```shell
-make all
-```
-To connect to terminal
-```shell
-make exec
-```
-*Default php version is 8.1*. Use PHP_VERSION= to use your version. Only versions 8.0 and 8.1 are available for now.
-```shell
-make all PHP_VERSION=8.0
-# run both 
-make all PHP_VERSION=8.0 && make all PHP_VERSION=8.1
+make help                 # список целей Makefile
+make build                # Docker-образ
+make install              # зависимости, включая dev
+make install-no-dev       # только production-зависимости
+make style                # PHPCS, PSR-12
+make static-analyze       # PHPStan, level 8
+make unit                 # unit-тесты и покрытие
+make exec                 # интерактивная оболочка контейнера
 ```
 
-*For integration tests copy .env.example to .env and fill with yours values*
-
-all commands
-```shell
-# security check
-make security
-# composer install
-make install
-# composer install with --no-dev
-make install-no-dev
-# check code style
-make style
-# run static analyze tools
-make static-analyze
-# run unit tests
-make unit
-#  check coverage
-make coverage
-# check integration, .env required
-make integration
-```
+Интеграционные тесты запускаются отдельно: скопируйте `.env.example` в `.env`,
+заполните тестовые учётные данные devtr6 и выполните `make integration`.
+Если ключ хранится в `vetmanager-mcp/.env`, перенесите `TEST_API_KEY` локально,
+а `TEST_DOMAIN` запишите здесь как `TEST_DOMAIN_NAME=devtr6`. Проверка
+service API key пропускается, если `SERVICE_NAME` и `SERVICE_API_KEY` пусты.
+Не коммитьте `.env`. Для одного теста: `make integration_one TestName`.
+В GitHub Actions интеграция запускается отдельно через `workflow_dispatch`;
+обычная матрица PR проверяет стиль, анализ, unit-тесты и покрытие.
+Целей `security` и `coverage` в `Makefile` нет.
