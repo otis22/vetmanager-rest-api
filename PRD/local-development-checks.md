@@ -50,4 +50,4 @@
 | `docker run --rm -v "$PWD":/app -w /app vetmanager-rest-api:8.3 composer validate --no-check-publish` | 0 | `composer.json` valid |
 | `git diff --check` | 0 | Ошибок пробелов нет |
 
-Локальный `.env` содержит только `TEST_DOMAIN_NAME=devtr6` и тестовый `TEST_API_KEY`; файл игнорируется Git. В `vetmanager-mcp/.env` не было `SERVICE_NAME` / `SERVICE_API_KEY`. Предыдущие CI-запуски PR #26 имели 401 на интеграции, Coveralls 422 и отменённые jobs; новая CI-конфигурация ещё должна подтвердиться запуском GitHub Actions после push. Живую интеграцию в CI до обновления отдельных CI-секретов считать непроверенной.
+Локальный `.env` содержит только `TEST_DOMAIN_NAME=devtr6` и тестовый `TEST_API_KEY`; файл игнорируется Git. В `vetmanager-mcp/.env` не было `SERVICE_NAME` / `SERVICE_API_KEY`. Предыдущие CI-запуски PR #26 имели 401 на интеграции, Coveralls 422 и отменённые jobs. Новый [CI run](https://github.com/otis22/vetmanager-rest-api/actions/runs/39475687367) для `c9eb1ac` завершился success: все шесть jobs PHP 7.3–8.3 прошли. Живую интеграцию в CI до обновления отдельных CI-секретов считать непроверенной.
