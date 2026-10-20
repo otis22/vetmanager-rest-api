@@ -410,9 +410,9 @@ use Otis22\VetmanagerRestApi\Query\Filter;
 статический анализ, запускает unit-тесты и проверяет покрытие не ниже 90%.
 Версия PHP по умолчанию в `Makefile` — 8.3. Для другой версии задайте
 `PHP_VERSION`, например `make all PHP_VERSION=8.2`. В CI проверяются версии
-PHP 7.3–8.3 командами Composer. Локальная Docker-сборка PHP 7.3 сейчас
-блокируется отсутствующим пакетом `icu-data-full` в Alpine 3.15; это не
-ограничение `composer.json` или CI.
+PHP 7.3–8.3 командами Composer. При смене версии PHP используйте чистую
+рабочую копию: локальный `composer.lock` не отслеживается Git и может
+содержать зависимости, несовместимые с другой версией PHP.
 
 ```shell
 make help                 # список целей Makefile
@@ -426,6 +426,11 @@ make exec                 # интерактивная оболочка конт
 ```
 
 Интеграционные тесты запускаются отдельно: скопируйте `.env.example` в `.env`,
-заполните тестовые учётные данные и выполните `make integration`. Не коммитьте
-`.env`. Для одного интеграционного теста: `make integration_one TestName`.
+заполните тестовые учётные данные devtr6 и выполните `make integration`.
+Если ключ хранится в `vetmanager-mcp/.env`, перенесите `TEST_API_KEY` локально,
+а `TEST_DOMAIN` запишите здесь как `TEST_DOMAIN_NAME=devtr6`. Проверка
+service API key пропускается, если `SERVICE_NAME` и `SERVICE_API_KEY` пусты.
+Не коммитьте `.env`. Для одного теста: `make integration_one TestName`.
+В GitHub Actions интеграция запускается отдельно через `workflow_dispatch`;
+обычная матрица PR проверяет стиль, анализ, unit-тесты и покрытие.
 Целей `security` и `coverage` в `Makefile` нет.

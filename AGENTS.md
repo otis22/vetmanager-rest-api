@@ -17,7 +17,7 @@
 ## Проверки
 
 - `make all PHP_VERSION=8.3` — Docker: сборка, установка зависимостей, PHPCS, PHPStan, unit-тесты и покрытие 90%. `make help` показывает доступные цели.
-- В CI матрица PHP 7.3–8.3 выполняет `composer validate`, `composer install`, `composer check-style`, `composer check-static-analyze`, `composer unit` и `composer integration`. `make build PHP_VERSION=7.3` сейчас блокируется отсутствующим `icu-data-full` в Alpine 3.15; для проверки этой версии используйте CI или отдельную среду. Успешная проверка на 8.3 сама по себе не подтверждает совместимость 7.3.
+- В обычной CI-матрице PHP 7.3–8.3 выполняются `composer validate`, `composer install`, `composer check-style`, `composer check-static-analyze` и `composer unit`. Интеграция запускается вручную через `workflow_dispatch` с отдельными CI-секретами. Пока их пригодность не подтверждена, каждый PR с изменениями исполняемого кода или тестов должен содержать результат локального `make integration` только на devtr6 с числом пройденных и пропущенных тестов. Успешная проверка на 8.3 сама по себе не подтверждает совместимость 7.3.
 - `make integration` требует `.env` и доступный тестовый API; не запускайте его на production-учётных данных.
 
 ## Git
