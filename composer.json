@@ -23,7 +23,7 @@
         "phpstan/phpstan": "^1.12.34",
         "otis22/php-coverage-checker": "^1.2",
         "guzzlehttp/guzzle": "^7.5",
-        "otis22/vetmanager-url": "^0.3.0"
+        "otis22/vetmanager-url": "^0.3 || ^1.1"
     },
     "autoload": {
         "psr-4": {

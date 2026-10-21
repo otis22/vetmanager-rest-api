@@ -34,3 +34,9 @@
 | C4 | done | C2 | Добавлены 9 контрактных edge-case тестов без изменения публичного поведения. `make all PHP_VERSION=7.3` и `8.5`: exit 0, 56 tests / 64 assertions, покрытие 94,63%; CI 12/12 SUCCESS. |
 | C5 | done | C4 | `make integration` только на devtr6: PHP 7.3 и 8.5 — exit 0, по 56 tests / 55 assertions / 1 skipped (service API key); 2026-10-21. |
 | C6 | todo | C2, C3 | Major-этап условен; production `--no-dev` на PHP 7.3 проходит, доказанного повода менять минимум или публичный API нет. |
+
+## PR #25 — dev-зависимость URL
+
+| ID | Статус | Зависит от | Задача и приёмка |
+| --- | --- | --- | --- |
+| R1 | done | C5 | Alias заменён на `^0.3 || ^1.1`; локальные `make all` на PHP 7.3/8.3/8.5 и интеграция devtr6 прошли, независимое ревью diff без блокирующих замечаний, CI `f69447b` 12/12 SUCCESS. Команды и ограничения — в `PRD/pr25-url-dependency.md`; CI финального документального commit — перед merge. |
