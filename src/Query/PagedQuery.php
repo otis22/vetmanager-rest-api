@@ -77,6 +77,7 @@ final class PagedQuery implements KeyValue
 
     /**
      * @inheritDoc
+     * @return array<string, int|string>
      */
     public function asKeyValue(): array
     {
@@ -88,7 +89,7 @@ final class PagedQuery implements KeyValue
     }
 
     /**
-     * @return array<string, string>
+     * @return array<string, int|string>
      */
     private function queryWithPageData(): array
     {

@@ -8,43 +8,118 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
+      fail-fast: false
       matrix:
-        php-versions: ['7.3', '7.4', '8.0', '8.1', '8.2', '8.3']
+        php-version: ['7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5']
+        dependency-set: [latest]
+        include:
+          - php-version: '7.3'
+            dependency-set: minimum
+          - php-version: '8.5'
+            dependency-set: minimum
+          - php-version: '7.3'
+            dependency-set: production
+          - php-version: '8.5'
+            dependency-set: production
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v5
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-versions }}
+          php-version: ${{ matrix.php-version }}
           extensions: mbstring, gd, zip
           ini-values: max_execution_time=600, memory_limit=-1
           coverage: xdebug
+          tools: composer:2.10.3
+      - name: Record toolchain
+        run: |
+          php -v | head -n 1
+          composer --version
+          php -v | head -n 1 >> toolchain.txt
+          composer --version >> toolchain.txt
       - name: Validate composer.json
+        id: validate
         run: |
-          curl -sS https://getcomposer.org/installer | php -- --filename=composer
-          composer validate
-      - name: Install dependency
+          trap 'echo $? > validate.exit' EXIT
+          composer validate --strict
+      - name: Resolve dependencies
+        id: resolve
         run: |
-          composer install
-      - name: Check code standart
+          trap 'echo $? > resolve.exit' EXIT
+          if [ '${{ matrix.dependency-set }}' = minimum ]; then
+            composer update --prefer-lowest --prefer-stable --no-interaction --prefer-dist
+          elif [ '${{ matrix.dependency-set }}' = production ]; then
+            composer install --no-dev --no-interaction --prefer-dist
+            composer check-platform-reqs --no-dev
+          else
+            composer install --no-interaction --prefer-dist
+          fi
+          composer show --locked --no-ansi > resolved-packages.txt
+      - name: Check code style
+        id: style
+        if: matrix.dependency-set != 'production'
         run: |
+          trap 'echo $? > style.exit' EXIT
           composer check-style
       - name: Analyze code
+        id: analyze
+        if: matrix.dependency-set != 'production'
         run: |
+          trap 'echo $? > analyze.exit' EXIT
           composer check-static-analyze
-      - name: Run tests
+      - name: Run unit tests and coverage
+        id: unit
+        if: matrix.dependency-set != 'production'
         run: |
+          trap 'echo $? > unit.exit' EXIT
           composer unit
+      - name: Smoke production autoload
+        id: smoke
+        if: matrix.dependency-set == 'production'
+        run: |
+          trap 'echo $? > smoke.exit' EXIT
+          php -r 'require "vendor/autoload.php"; echo \Otis22\VetmanagerRestApi\uri("invoice")->asString(), PHP_EOL;'
+      - name: Record result
+        if: always()
+        run: |
+          {
+            echo '### PHP ${{ matrix.php-version }} / ${{ matrix.dependency-set }}'
+            echo '```'
+            cat toolchain.txt 2>/dev/null || true
+            echo '```'
+            echo '| Step | Outcome |'
+            echo '| --- | --- |'
+            echo '| validate | ${{ steps.validate.outcome }} |'
+            echo '| resolve | ${{ steps.resolve.outcome }} |'
+            echo '| style | ${{ steps.style.outcome }} |'
+            echo '| analyze | ${{ steps.analyze.outcome }} |'
+            echo '| unit | ${{ steps.unit.outcome }} |'
+            echo '| production smoke | ${{ steps.smoke.outcome }} |'
+            echo 'Exit codes:'
+            for result in *.exit; do
+              [ -f "$result" ] && printf '%s=%s\n' "$result" "$(cat "$result")"
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload resolved packages
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: packages-${{ matrix.php-version }}-${{ matrix.dependency-set }}
+          path: |
+            toolchain.txt
+            resolved-packages.txt
+            *.exit
+          if-no-files-found: warn
       - name: Upload coverage results to Coveralls
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && matrix['php-versions'] == '8.3'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && matrix.php-version == '8.3' && matrix.dependency-set == 'latest'
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           composer global require php-coveralls/php-coveralls
           php-coveralls --coverage_clover=build/logs/clover.xml -v
       - name: Run integration tests
-        if: github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'workflow_dispatch' && matrix.dependency-set == 'latest'
         env:
           TEST_API_KEY: ${{ secrets.TEST_API_KEY }}
           TEST_DOMAIN_NAME: ${{ secrets.TEST_DOMAIN_NAME }}
