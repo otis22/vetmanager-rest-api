@@ -22,3 +22,15 @@
 | ID | Статус | Зависит от | Задача и приёмка |
 | --- | --- | --- | --- |
 | C1 | done | N1 | В README разделены объявленное ограничение PHP, текущая CI-матрица и цель 8.5; объяснены игнорируемый lock и чистое разрешение по платформе. Независимые ревью PRD и diff, команды, exit codes, описи зависимостей и ограничения записаны в `PRD/php-compatibility-policy.md`. Публичный API и исполняемый код не менялись. |
+
+## Завершение roadmap PHP 7.3–8.5
+
+Постановка, ревью и точные локальные команды — в `PRD/php-compatibility-completion.md`.
+
+| ID | Статус | Зависит от | Задача и приёмка |
+| --- | --- | --- | --- |
+| C2 | in_progress | C1 | Удалены неиспользуемые прямые dev-пакеты, minimum-разрешение обнаружило и исправило нижнюю границу `arrayee`; PHPStan оставлен в совместимой с 7.3 ветке. Чистые latest/minimum и production `--no-dev` проверки на 7.3/8.5 локально прошли. Для `done` нужен CI итогового SHA. |
+| C3 | in_progress | C2 | CI содержит 8 latest jobs и по 2 minimum/production jobs на краях, Composer 2.10.3, опись пакетов и exit codes. Для `done` все 12 jobs должны завершиться SUCCESS на итоговом SHA PR #27. |
+| C4 | in_progress | C2 | Добавлены 9 контрактных edge-case тестов без изменения публичного поведения. `make all PHP_VERSION=7.3` и `8.5`: exit 0, 56 tests / 64 assertions, покрытие 94,63%. Для `done` нужен CI итогового SHA. |
+| C5 | done | C4 | `make integration` только на devtr6: PHP 7.3 и 8.5 — exit 0, по 56 tests / 55 assertions / 1 skipped (service API key); 2026-10-21. |
+| C6 | todo | C2, C3 | Major-этап условен; production `--no-dev` на PHP 7.3 проходит, доказанного повода менять минимум или публичный API нет. |
