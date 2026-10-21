@@ -404,41 +404,71 @@ use Otis22\VetmanagerRestApi\Query\Filter;
 ```
 
 
-## Contributing
+## Разработка
 
-To run all tests
+### Совместимость PHP и зависимости
+
+`composer.json` объявляет `>=7.3 || ^8.0` (по смыслу `>=7.3`) без верхней
+границы. Это ограничение для установки, а не обещание, что каждая будущая версия
+PHP уже проверена. В обязательной CI-матрице PR настроены задания для PHP 7.3,
+7.4 и 8.0–8.5. Дополнительно на крайних версиях проверяются минимальные
+зависимости и production-установка без dev-пакетов. Подтверждение диапазона
+для конкретного изменения требует зелёного CI именно его SHA; интеграция
+на devtr6 выполняется отдельно. В текущей линии сохраняются синтаксис PHP
+7.3 и публичные сигнатуры/сериализация библиотеки.
+
+`composer.lock` игнорируется Git по принятой для этой матрицы схеме: один
+dev-lock не переносится между PHP 7.3 и 8.5. Чистый `composer install` разрешает
+последние допустимые зависимости под фактическую версию PHP; отдельные CI jobs
+используют `composer update --prefer-lowest --prefer-stable` для проверки нижних
+границ. Повторный локальный запуск уже использует созданный lock. Для другой
+версии PHP берите чистую копию без `composer.lock`, `vendor/` и `build/`.
+Такое разрешение остаётся зависимым от доступности репозиториев пакетов;
+CI сохраняет список разрешённых пакетов как артефакт. [Composer рекомендует
+хранить lock для разработки библиотеки](https://getcomposer.org/doc/02-libraries.md#lock-file),
+но в этом проекте вместо единого lock выбран платформенный матричный прогон.
+
+Dockerfile и CI используют Composer 2.10.3. Версии PHP, Composer и разрешённых
+пакетов нужно записывать вместе с результатом проверки. Для каждой версии PHP
+в чистой копии выполните:
+
 ```shell
-make all
-```
-To connect to terminal
-```shell
-make exec
-```
-*Default php version is 8.1*. Use PHP_VERSION= to use your version. Only versions 8.0 and 8.1 are available for now.
-```shell
-make all PHP_VERSION=8.0
-# run both 
-make all PHP_VERSION=8.0 && make all PHP_VERSION=8.1
+make all PHP_VERSION=7.3         # или 8.5; каждый раз отдельная чистая копия
+docker run --rm vetmanager-rest-api:7.3 php -v
+docker run --rm vetmanager-rest-api:7.3 composer --version
+docker run --rm -v "$PWD":/app -w /app vetmanager-rest-api:7.3 composer show --locked
+sha256sum composer.lock
 ```
 
-*For integration tests copy .env.example to .env and fill with yours values*
+Для 8.5 замените `7.3` на `8.5` во всех командах. Сохраните сами команды,
+коды завершения и версии PHP/Composer в результате PR. `make all` выполняет
+unit-проверки; интеграция на devtr6 запускается отдельно по правилам ниже.
 
-all commands
+`make all` собирает Docker-образ, устанавливает зависимости, проверяет стиль и
+статический анализ, запускает unit-тесты и проверяет покрытие не ниже 90%.
+Версия PHP по умолчанию в `Makefile` — 8.3. Для другой версии задайте
+`PHP_VERSION`, например `make all PHP_VERSION=8.2`. В CI проверяются версии
+PHP 7.3–8.5 командами Composer. При смене версии PHP используйте чистую
+рабочую копию: локальный `composer.lock` не отслеживается Git и может
+содержать зависимости, несовместимые с другой версией PHP.
+
 ```shell
-# security check
-make security
-# composer install
-make install
-# composer install with --no-dev
-make install-no-dev
-# check code style
-make style
-# run static analyze tools
-make static-analyze
-# run unit tests
-make unit
-#  check coverage
-make coverage
-# check integration, .env required
-make integration
+make help                 # список целей Makefile
+make build                # Docker-образ
+make install              # зависимости, включая dev
+make install-no-dev       # только production-зависимости
+make style                # PHPCS, PSR-12
+make static-analyze       # PHPStan, level 8
+make unit                 # unit-тесты и покрытие
+make exec                 # интерактивная оболочка контейнера
 ```
+
+Интеграционные тесты запускаются отдельно: скопируйте `.env.example` в `.env`,
+заполните тестовые учётные данные devtr6 и выполните `make integration`.
+Если ключ хранится в `vetmanager-mcp/.env`, перенесите `TEST_API_KEY` локально,
+а `TEST_DOMAIN` запишите здесь как `TEST_DOMAIN_NAME=devtr6`. Проверка
+service API key пропускается, если `SERVICE_NAME` и `SERVICE_API_KEY` пусты.
+Не коммитьте `.env`. Для одного теста: `make integration_one TestName`.
+В GitHub Actions интеграция запускается отдельно через `workflow_dispatch`;
+обычная матрица PR проверяет стиль, анализ, unit-тесты и покрытие.
+Целей `security` и `coverage` в `Makefile` нет.

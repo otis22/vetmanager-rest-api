@@ -29,6 +29,10 @@ final class AuthTest extends TestCase
 
     public function testServiceApiKey(): void
     {
+        if (!getenv('SERVICE_NAME') || !getenv('SERVICE_API_KEY')) {
+            $this->markTestSkipped('Service API credentials are not configured.');
+        }
+
         $this->assertTrue(
             $this->jsonTestResponse(
                 byServiceApiKey(
