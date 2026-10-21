@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -24,7 +24,7 @@ jobs:
           - php-version: '8.5'
             dependency-set: production
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
@@ -103,7 +103,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
       - name: Upload resolved packages
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: packages-${{ matrix.php-version }}-${{ matrix.dependency-set }}
           path: |
