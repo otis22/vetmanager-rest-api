@@ -30,6 +30,28 @@ both artifacts from a pinned upstream commit, retain [its license notice](docs/o
 record the new commit and SHA-256 hashes in the integration PRD, and run upstream
 `python3 scripts/validate_openapi.py` before changing the roadmap.
 
+The [operation support matrix](docs/openapi/operation-support.json) lists every
+operation in this snapshot. `uri_support` describes URI construction only;
+`http_method_support` and `schema_support` remain `none`. Run
+`python3 -I scripts/check_openapi_contract.py` to check the pinned files, references,
+operation IDs, and matrix. The matrix is regenerated with `--refresh` after an
+intentional contract change and its diff must be reviewed.
+
+For documented named routes, use the separate `openApiPath()` helper:
+
+```php
+use function Otis22\VetmanagerRestApi\openApiPath;
+
+$path = openApiPath('VmLink/personalAccountLinkByPhone/{phone}', [
+    'phone' => '+79990000000'
+])->asString();
+```
+
+It accepts only the [19 named templates](src/URI/OpenApiPath.php) in the pinned
+snapshot and percent-encodes each parameter as one path segment. This builds a URI;
+the application still chooses the HTTP method, authentication, query, and body.
+The legacy `uri()` helper retains its previous output and all previous model names.
+
 ## What for?
 
 1. To get full url by providing only domain name (host might change)

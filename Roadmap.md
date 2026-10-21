@@ -13,7 +13,8 @@
 | 7 | Интеграция devtr6 на 7.3 и 8.5 | done | `Tasks.md` → C5; 2026-10-21 |
 | 8 | Условный план major | todo | `Tasks.md` → C6; только при доказанной необходимости и решении владельца |
 | 9 | Совместимое обновление dev-зависимости URL в PR #25 | done | `Tasks.md` → R1; `PRD/pr25-url-dependency.md`; 2026-10-21 |
-| 10 | Снимок OpenAPI 1.3.1 и контрактная очередь | in_progress | `Tasks.md` → O1–O8; постановка `PRD/openapi-integration.md`; O1 — 2026-10-21, O2–O8 в очереди |
+| 10 | Снимок OpenAPI 1.3.1 и контрактная очередь | in_progress | `Tasks.md` → O1–O8b; O1 выполнен, O2/O3/O8a в работе; `PRD/openapi-integration.md`, `PRD/openapi-compatible-expansion.md` |
+| 11 | ⚠️ Исследование несовместимых вариантов для major | todo | `Tasks.md` → M1; `PRD/openapi-contract-research.md`; удаление старых имён, смена сигнатур или сериализации и обязательная строгая валидация нарушают совместимость и в минорный выпуск не входят |
 
 Статусы: `todo`, `in_progress`, `done`, `blocked`. При завершении этапа укажите дату, а в `Tasks.md` — результаты приёмки. Commit определяется по истории Git.
 
