@@ -1,0 +1,1098 @@
+[
+  {
+    "method": "GET",
+    "path": "/rest/api/ComboManualItem",
+    "operationId": "get_rest_api_ComboManualItem",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/ComboManualItem",
+    "operationId": "post_rest_api_ComboManualItem",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/ComboManualItem/{ID}",
+    "operationId": "get_rest_api_ComboManualItem_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/ComboManualItem/{ID}",
+    "operationId": "put_rest_api_ComboManualItem_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/ComboManualName",
+    "operationId": "get_rest_api_ComboManualName",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/ComboManualName/{ID}",
+    "operationId": "get_rest_api_ComboManualName_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/GoodGroup",
+    "operationId": "get_rest_api_GoodGroup",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/GoodGroup",
+    "operationId": "post_rest_api_GoodGroup",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "DELETE",
+    "path": "/rest/api/GoodGroup/{ID}",
+    "operationId": "delete_rest_api_GoodGroup_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/GoodGroup/{ID}",
+    "operationId": "put_rest_api_GoodGroup_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/HospitalBlock",
+    "operationId": "get_rest_api_HospitalBlock",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/HospitalBlock/{ID}",
+    "operationId": "get_rest_api_HospitalBlock_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/MedicalCards",
+    "operationId": "get_rest_api_MedicalCards",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/MedicalCards",
+    "operationId": "post_rest_api_MedicalCards",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/MedicalCards/AddVaccination",
+    "operationId": "post_rest_api_MedicalCards_AddVaccination",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/MedicalCards/AllDiagnoses",
+    "operationId": "get_rest_api_MedicalCards_AllDiagnoses",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/MedicalCards/MedcardsTextTemplates",
+    "operationId": "get_rest_api_MedicalCards_MedcardsTextTemplates",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/MedicalCards/MedicalcardsDataByClient",
+    "operationId": "get_rest_api_MedicalCards_MedicalcardsDataByClient",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/MedicalCards/Vaccinations",
+    "operationId": "get_rest_api_MedicalCards_Vaccinations",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/MedicalCards/{ID}",
+    "operationId": "get_rest_api_MedicalCards_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/MedicalCards/{ID}",
+    "operationId": "put_rest_api_MedicalCards_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/PartyAccount",
+    "operationId": "get_rest_api_PartyAccount",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/PartyAccount/{ID}",
+    "operationId": "get_rest_api_PartyAccount_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/PartyAccountDoc",
+    "operationId": "get_rest_api_PartyAccountDoc",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/PartyAccountDoc/{ID}",
+    "operationId": "get_rest_api_PartyAccountDoc_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/StoreDocument",
+    "operationId": "get_rest_api_StoreDocument",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/StoreDocument/{ID}",
+    "operationId": "get_rest_api_StoreDocument_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/StoreDocumentOperation/{ID}",
+    "operationId": "get_rest_api_StoreDocumentOperation_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/Suppliers",
+    "operationId": "get_rest_api_Suppliers",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/Suppliers",
+    "operationId": "post_rest_api_Suppliers",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/Suppliers/{ID}",
+    "operationId": "get_rest_api_Suppliers_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/Unit",
+    "operationId": "post_rest_api_Unit",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "DELETE",
+    "path": "/rest/api/Unit/{ID}",
+    "operationId": "delete_rest_api_Unit_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/Unit/{ID}",
+    "operationId": "put_rest_api_Unit_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/VmLink/personalAccountLinkByClientId/{clientId}",
+    "operationId": "get_rest_api_VmLink_personalAccountLinkByClientId_1",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/VmLink/personalAccountLinkByPhone/{phone}",
+    "operationId": "get_rest_api_VmLink_personalAccountLinkByPhone_3322122",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/admission",
+    "operationId": "get_rest_api_admission",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/admission",
+    "operationId": "post_rest_api_admission",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "DELETE",
+    "path": "/rest/api/admission/{ID}",
+    "operationId": "delete_rest_api_admission_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/admission/{ID}",
+    "operationId": "get_rest_api_admission_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/admission/{ID}",
+    "operationId": "put_rest_api_admission_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/anonymousClient",
+    "operationId": "get_rest_api_anonymousClient",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/anonymousClient/{id}",
+    "operationId": "get_rest_api_anonymousClient_116468",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/breed",
+    "operationId": "get_rest_api_breed",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/breed/{ID}",
+    "operationId": "get_rest_api_breed_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/cassa",
+    "operationId": "get_rest_api_cassa",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/cassa/{ID}",
+    "operationId": "get_rest_api_cassa_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/cassaclose",
+    "operationId": "get_rest_api_cassaclose",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/cassaclose/{ID}",
+    "operationId": "get_rest_api_cassaclose_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/cassarashod",
+    "operationId": "get_rest_api_cassarashod",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/cassarashod/{ID}",
+    "operationId": "get_rest_api_cassarashod_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/city",
+    "operationId": "get_rest_api_city",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/city",
+    "operationId": "post_rest_api_city",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "DELETE",
+    "path": "/rest/api/city/{ID}",
+    "operationId": "delete_rest_api_city_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/city/{ID}",
+    "operationId": "put_rest_api_city_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/city/{id}",
+    "operationId": "get_rest_api_city_255",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/cityType",
+    "operationId": "get_rest_api_cityType",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/cityType",
+    "operationId": "post_rest_api_cityType",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "DELETE",
+    "path": "/rest/api/cityType/{ID}",
+    "operationId": "delete_rest_api_cityType_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/cityType/{ID}",
+    "operationId": "get_rest_api_cityType_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/cityType/{ID}",
+    "operationId": "put_rest_api_cityType_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/client",
+    "operationId": "get_rest_api_client",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "DELETE",
+    "path": "/rest/api/client/{ID}",
+    "operationId": "delete_rest_api_client_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/client/{ID}",
+    "operationId": "post_rest_api_client_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/client/{ID}",
+    "operationId": "put_rest_api_client_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/client/{id}",
+    "operationId": "get_rest_api_client_116468",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/clinics",
+    "operationId": "get_rest_api_clinics",
+    "uri_support": "model_uri",
+    "http_method_support": "clinics_get",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/clinics/{ID}",
+    "operationId": "get_rest_api_clinics_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/closingOfInvoices",
+    "operationId": "get_rest_api_closingOfInvoices",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/closingOfInvoices/{ID}",
+    "operationId": "get_rest_api_closingOfInvoices_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/fiscalRegisterData",
+    "operationId": "get_rest_api_fiscalRegisterData",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/fiscalRegisterData/{ID}",
+    "operationId": "get_rest_api_fiscalRegisterData_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/fiscalTaxSystems",
+    "operationId": "get_rest_api_fiscalTaxSystems",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/fiscalTaxSystems/{ID}",
+    "operationId": "get_rest_api_fiscalTaxSystems_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/good",
+    "operationId": "get_rest_api_good",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/good",
+    "operationId": "post_rest_api_good",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "DELETE",
+    "path": "/rest/api/good/{ID}",
+    "operationId": "delete_rest_api_good_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/good/{ID}",
+    "operationId": "get_rest_api_good_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/good/{ID}",
+    "operationId": "put_rest_api_good_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/goodGroup/{id}",
+    "operationId": "get_rest_api_goodGroup_9",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/goodSaleParam",
+    "operationId": "get_rest_api_goodSaleParam",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/goodSaleParam/{ID}",
+    "operationId": "put_rest_api_goodSaleParam_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/goodTag",
+    "operationId": "get_rest_api_goodTag",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/goodTag",
+    "operationId": "post_rest_api_goodTag",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "DELETE",
+    "path": "/rest/api/goodTag/{id}",
+    "operationId": "delete_rest_api_goodTag_203",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/goodTag/{id}",
+    "operationId": "get_rest_api_goodTag_203",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/goodTag/{id}",
+    "operationId": "put_rest_api_goodTag_203",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/hospital",
+    "operationId": "get_rest_api_hospital",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/hospital/{ID}",
+    "operationId": "get_rest_api_hospital_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/hospital/{ID}",
+    "operationId": "put_rest_api_hospital_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/invoice",
+    "operationId": "get_rest_api_invoice",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/invoice/createinvoice",
+    "operationId": "post_rest_api_invoice_createinvoice",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/invoice/{ID}",
+    "operationId": "get_rest_api_invoice_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/invoiceDocument",
+    "operationId": "get_rest_api_invoiceDocument",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/invoiceDocument/{ID}",
+    "operationId": "get_rest_api_invoiceDocument_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/messages/all",
+    "operationId": "post_rest_api_messages_all",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/messages/reports",
+    "operationId": "get_rest_api_messages_reports",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/messages/roles",
+    "operationId": "post_rest_api_messages_roles",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/messages/users",
+    "operationId": "post_rest_api_messages_users",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/payment",
+    "operationId": "get_rest_api_payment",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/payment/{ID}",
+    "operationId": "get_rest_api_payment_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/pet",
+    "operationId": "get_rest_api_pet",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/pet",
+    "operationId": "post_rest_api_pet",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/pet/{ID}",
+    "operationId": "put_rest_api_pet_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "DELETE",
+    "path": "/rest/api/pet/{id}",
+    "operationId": "delete_rest_api_pet_122",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/pet/{id}",
+    "operationId": "get_rest_api_pet_74",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/petType",
+    "operationId": "get_rest_api_petType",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/petType/{ID}",
+    "operationId": "get_rest_api_petType_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/properties",
+    "operationId": "get_rest_api_properties",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/report-ai-job",
+    "operationId": "post_rest_api_report_ai_job",
+    "uri_support": "none",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/report-ai-job/{id}",
+    "operationId": "get_rest_api_report_ai_job_id",
+    "uri_support": "none",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/report-ai-job/{id}/confirm",
+    "operationId": "post_rest_api_report_ai_job_id_confirm",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/report-ai-job/{id}/data",
+    "operationId": "get_rest_api_report_ai_job_id_data",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/report-ai-job/{id}/save",
+    "operationId": "post_rest_api_report_ai_job_id_save",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/report/StartReport",
+    "operationId": "get_rest_api_report_StartReport",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/report/reportFile",
+    "operationId": "get_rest_api_report_reportFile",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/role",
+    "operationId": "get_rest_api_role",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/role/{id}",
+    "operationId": "get_rest_api_role_2",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/stores/RestOfGoodInWarehouse",
+    "operationId": "get_rest_api_stores_RestOfGoodInWarehouse",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/street",
+    "operationId": "get_rest_api_street",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/street",
+    "operationId": "post_rest_api_street",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "DELETE",
+    "path": "/rest/api/street/{ID}",
+    "operationId": "delete_rest_api_street_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/street/{ID}",
+    "operationId": "put_rest_api_street_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/timesheet",
+    "operationId": "get_rest_api_timesheet",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/timesheet/{ID}",
+    "operationId": "get_rest_api_timesheet_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/unit",
+    "operationId": "get_rest_api_unit",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/unit/{id}",
+    "operationId": "get_rest_api_unit_1",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/user",
+    "operationId": "get_rest_api_user",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/user/anonymousList",
+    "operationId": "get_rest_api_user_anonymousList",
+    "uri_support": "named_path",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/user/{ID}",
+    "operationId": "get_rest_api_user_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/user/{ID}",
+    "operationId": "put_rest_api_user_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/userPosition",
+    "operationId": "get_rest_api_userPosition",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/rest/api/userPosition",
+    "operationId": "post_rest_api_userPosition",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "DELETE",
+    "path": "/rest/api/userPosition/{ID}",
+    "operationId": "delete_rest_api_userPosition_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "GET",
+    "path": "/rest/api/userPosition/{ID}",
+    "operationId": "get_rest_api_userPosition_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "PUT",
+    "path": "/rest/api/userPosition/{ID}",
+    "operationId": "put_rest_api_userPosition_ID",
+    "uri_support": "model_uri",
+    "http_method_support": "none",
+    "schema_support": "none"
+  },
+  {
+    "method": "POST",
+    "path": "/token_auth.php",
+    "operationId": "post_token_auth_php",
+    "uri_support": "none",
+    "http_method_support": "none",
+    "schema_support": "none"
+  }
+]

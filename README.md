@@ -14,6 +14,63 @@ Vetmanager - veterinary CRM with REST API. vetmanager-rest-api is a library to h
 
 [vetmanager REST API in Postman](https://www.postman.com/vetmanager/workspace/vetmanager-api/collection/23836400-17133b76-0f52-4bb4-8b38-28a64781074e)
 
+## OpenAPI specification
+
+The repository includes a [versioned OpenAPI 3.0 snapshot](docs/openapi/vetmanager_openapi_v6.yaml)
+and its [JSON equivalent](docs/openapi/vetmanager_openapi_v6.json). Both are copied
+from [vetmanager-openapi at commit e2769471](https://github.com/otis22/vetmanager-openapi/tree/e2769471bf46d13e1334b8d09252a7456a5af579)
+(`info.version: 1.3.1`); the [published Swagger UI](https://otis22.github.io/vetmanager-openapi/)
+uses the YAML file. The files describe the server API. This PHP package currently
+provides generic URI, authentication, filter, sort, and pagination helpers; it does
+not implement every operation or response schema in the specification. See the
+[roadmap](Roadmap.md) for the contract comparison and planned work.
+
+The files are a fixed snapshot, not a live dependency. When updating them, copy
+both artifacts from a pinned upstream commit, retain [its license notice](docs/openapi/LICENSE),
+record the new commit and SHA-256 hashes in the integration PRD, and run upstream
+`python3 scripts/validate_openapi.py` before changing the roadmap.
+
+The [operation support matrix](docs/openapi/operation-support.json) lists every
+operation in this snapshot. `uri_support` describes URI construction;
+`http_method_support` marks the optional `clinics_get` method, and
+`schema_support` remains `none`. Run
+`python3 -I scripts/check_openapi_contract.py` to check the pinned files, references,
+operation IDs, and matrix. The matrix is regenerated with `--refresh` after an
+intentional contract change and its diff must be reviewed.
+
+For named server routes, use the separate `namedPath()` helper:
+
+```php
+use function Otis22\VetmanagerRestApi\namedPath;
+
+$path = namedPath('VmLink/personalAccountLinkByPhone/{phone}', [
+    'phone' => '+79990000000'
+])->asString();
+```
+
+It accepts only the [19 named templates](src/URI/NamedPath.php) currently checked
+against the pinned snapshot and percent-encodes each parameter as one path segment.
+The PHP API names describe server paths and do not depend on the specification format.
+This builds a URI;
+the application still chooses the HTTP method, authentication, query, and body.
+The legacy `uri()` helper retains its previous output and all previous model names.
+
+For the confirmed read-only clinics collection, an optional method layer uses a
+caller-configured Guzzle client, including its `base_uri` and error behavior:
+
+```php
+use GuzzleHttp\Client;
+use Otis22\VetmanagerRestApi\Methods\Clinics;
+use function Otis22\VetmanagerRestApi\byApiKey;
+
+$client = new Client(['base_uri' => 'https://myclinic.vetmanager2.ru/']);
+$response = (new Clinics($client))->get(byApiKey('myapikey'));
+```
+
+`get()` defaults to `['limit' => 1]`, accepts an optional query array without
+client-side validation, and returns the original PSR response. Direct Guzzle
+requests remain available for every other route.
+
 ## What for?
 
 1. To get full url by providing only domain name (host might change)

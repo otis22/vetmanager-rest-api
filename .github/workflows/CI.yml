@@ -7,6 +7,12 @@ on:
   workflow_dispatch:
 
 jobs:
+  openapi-contract:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - name: Check pinned OpenAPI and library support matrix
+        run: python3 -I scripts/check_openapi_contract.py
   build:
     runs-on: ubuntu-24.04
     strategy:

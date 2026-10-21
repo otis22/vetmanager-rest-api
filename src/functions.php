@@ -66,3 +66,13 @@ function uri(string $model, ?int $id = null): URI
         ? new URI\OnlyModel(new Model($model))
         : new URI\WithId(new Model($model), $id);
 }
+
+/**
+ * Build a named server route.
+ *
+ * @param array<string, string|int> $parameters
+ */
+function namedPath(string $template, array $parameters = []): URI
+{
+    return new URI\NamedPath($template, $parameters);
+}

@@ -40,6 +40,9 @@ final class ClientFactory
      */
     private static function getBaseUrl(): string
     {
+        if (getenv('TEST_DOMAIN_NAME') !== 'devtr6') {
+            throw new \RuntimeException('Integration tests require TEST_DOMAIN_NAME=devtr6');
+        }
         if (self::$baseUrl === null) {
             self::$baseUrl = url((string)getenv('TEST_DOMAIN_NAME'))->asString();
         }

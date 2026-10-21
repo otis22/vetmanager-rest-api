@@ -35,6 +35,28 @@
 | C5 | done | C4 | `make integration` только на devtr6: PHP 7.3 и 8.5 — exit 0, по 56 tests / 55 assertions / 1 skipped (service API key); 2026-10-21. |
 | C6 | todo | C2, C3 | Major-этап условен; production `--no-dev` на PHP 7.3 проходит, доказанного повода менять минимум или публичный API нет. |
 
+## Этап 10 — OpenAPI и контрактная очередь
+
+Постановка O1: `PRD/openapi-integration.md`; совместимое расширение и результаты: `PRD/openapi-compatible-expansion.md`, `PRD/openapi-contract-research.md`.
+
+| ID | Статус | Зависит от | Задача и проверяемая приёмка |
+| --- | --- | --- | --- |
+| O1 | done | — | Вендорены неизменённые YAML/JSON OpenAPI 1.3.1 и уведомление MIT из фиксированного коммита; README содержит ссылку и порядок обновления. SHA-256 обоих файлов совпадают с источником, upstream-валидатор прошёл; ревью PRD и diff, команды и exit codes зафиксированы в PRD; 2026-10-21. |
+| O2 | in_progress | O1 | 14 подтверждённых имён добавлены без удаления старых. `ComboManualName` и `MedicalCards` дважды прошли read-only GET с `limit=1` на devtr6. `VmLink`/`messages`/`report-ai-job` не добавлены (500/500/404); остальные операции остаются исследованием. Результаты — `PRD/pr28-readonly-followup.md`. |
+| O3 | in_progress | O2 | `namedPath()` строит 19 именованных путей без изменения `uri()`. Три подтверждённых read-only GET (`AllDiagnoses`, `MedcardsTextTemplates`, `anonymousList`) дважды прошли на devtr6. Прочие шаблоны, включая POST и пути с ID без безопасных записей, остаются исследованием. |
+| O4 | in_progress | O2, O3 | Добавлен отдельный `Methods\Clinics::get()` для GET `clinics?limit=1`; method/query/headers/body и ошибки проверяются unit и devtr6. Прочие операции, особенно POST/PUT/DELETE, ждут payload, прав, статуса и очистки test data. |
+| O5 | todo | O1 | Сверить 36 схем и 39 операций с `requestBody` с безопасными метаданными/анонимизированными ответами devtr6. До такого источника не добавлять код; затем пометить обязательность, `nullable`, типы и несовпадения, сначала исправить upstream и обновить снимок. |
+| O6 | todo | O4, O5 | Спроектировать opt-in валидацию имён полей, типов, фильтров, пагинации и request body только по проверенным схемам. Приёмка: допустимые/отклоняемые значения, unit и devtr6, неизменная сериализация старого `Builder`. |
+| O7 | in_progress | O1 | Read-only probe проверяет API-key 200, 401 (нет/неверный key) и 404 без сохранения тела. Неверный `limit` ранее дал 200. Остальные ошибки, token/service и upstream-схемы остаются исследованием. |
+| O8a | done | O2–O3 | CI проверяет хэши снимка, `operationId`, `$ref`, набор 19 именованных путей и матрицу URI/HTTP/схем. На SHA `66fe289cea0d8202bcb26700d4e44d2a34ecf966` все 13 jobs успешны: [run 39593773534](https://github.com/otis22/vetmanager-rest-api/actions/runs/39593773534). |
+| O8b | in_progress | O4–O7 | Матрица и CI-гейт отмечают ровно `clinics_get`; `schema_support` остаётся `none`, схема ошибок не заявлена. Расширить карту после подтверждения O4–O7. |
+
+## Исследование для major
+
+| ID | Статус | Задача |
+| --- | --- | --- |
+| M1 | todo | Оценить несовместимые варианты из `PRD/openapi-contract-research.md`: удаление старых имён, смену регистра/сериализации/сигнатур, обязательную строгую валидацию и отказ от прежней авторизации. Не внедрять в минорный выпуск. |
+
 ## PR #25 — dev-зависимость URL
 
 | ID | Статус | Зависит от | Задача и приёмка |
