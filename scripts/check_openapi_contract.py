@@ -55,7 +55,7 @@ def model_names():
 
 
 def named_templates():
-    source = (ROOT / "src/URI/OpenApiPath.php").read_text()
+    source = (ROOT / "src/URI/NamedPath.php").read_text()
     match = re.search(r"public const TEMPLATES = \[(.*?)\];", source, re.S)
     if match is None:
         raise ValueError("named templates not found")

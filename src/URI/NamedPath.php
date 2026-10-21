@@ -7,9 +7,9 @@ namespace Otis22\VetmanagerRestApi\URI;
 use Otis22\VetmanagerRestApi\URI;
 
 /**
- * Builds a URI for a named route from the pinned OpenAPI snapshot.
+ * Builds a URI for a named server route.
  */
-final class OpenApiPath implements URI
+final class NamedPath implements URI
 {
     public const TEMPLATES = [
         'MedicalCards/AddVaccination',
@@ -45,7 +45,7 @@ final class OpenApiPath implements URI
     public function __construct(string $template, array $parameters = [])
     {
         if (!in_array($template, self::TEMPLATES, true)) {
-            throw new \InvalidArgumentException('Unknown OpenAPI path template');
+            throw new \InvalidArgumentException('Unknown named path template');
         }
 
         preg_match_all('/\{([A-Za-z][A-Za-z0-9]*)\}/', $template, $matches);

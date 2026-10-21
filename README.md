@@ -38,18 +38,20 @@ operation in this snapshot. `uri_support` describes URI construction;
 operation IDs, and matrix. The matrix is regenerated with `--refresh` after an
 intentional contract change and its diff must be reviewed.
 
-For documented named routes, use the separate `openApiPath()` helper:
+For named server routes, use the separate `namedPath()` helper:
 
 ```php
-use function Otis22\VetmanagerRestApi\openApiPath;
+use function Otis22\VetmanagerRestApi\namedPath;
 
-$path = openApiPath('VmLink/personalAccountLinkByPhone/{phone}', [
+$path = namedPath('VmLink/personalAccountLinkByPhone/{phone}', [
     'phone' => '+79990000000'
 ])->asString();
 ```
 
-It accepts only the [19 named templates](src/URI/OpenApiPath.php) in the pinned
-snapshot and percent-encodes each parameter as one path segment. This builds a URI;
+It accepts only the [19 named templates](src/URI/NamedPath.php) currently checked
+against the pinned snapshot and percent-encodes each parameter as one path segment.
+The PHP API names describe server paths and do not depend on the specification format.
+This builds a URI;
 the application still chooses the HTTP method, authentication, query, and body.
 The legacy `uri()` helper retains its previous output and all previous model names.
 

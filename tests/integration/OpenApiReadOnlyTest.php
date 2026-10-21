@@ -9,7 +9,7 @@ use Otis22\VetmanagerRestApi\Support\ClientFactory;
 use PHPUnit\Framework\TestCase;
 
 use function Otis22\VetmanagerRestApi\byApiKey;
-use function Otis22\VetmanagerRestApi\openApiPath;
+use function Otis22\VetmanagerRestApi\namedPath;
 use function Otis22\VetmanagerRestApi\uri;
 
 final class OpenApiReadOnlyTest extends TestCase
@@ -39,9 +39,9 @@ final class OpenApiReadOnlyTest extends TestCase
         return [
             'ComboManualName' => [uri('ComboManualName')->asString()],
             'MedicalCards' => [uri('MedicalCards')->asString()],
-            'AllDiagnoses' => [openApiPath('MedicalCards/AllDiagnoses')->asString()],
-            'MedcardsTextTemplates' => [openApiPath('MedicalCards/MedcardsTextTemplates')->asString()],
-            'anonymousList' => [openApiPath('user/anonymousList')->asString()],
+            'AllDiagnoses' => [namedPath('MedicalCards/AllDiagnoses')->asString()],
+            'MedcardsTextTemplates' => [namedPath('MedicalCards/MedcardsTextTemplates')->asString()],
+            'anonymousList' => [namedPath('user/anonymousList')->asString()],
         ];
     }
 

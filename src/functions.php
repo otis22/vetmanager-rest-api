@@ -68,11 +68,11 @@ function uri(string $model, ?int $id = null): URI
 }
 
 /**
- * Build a named route from the pinned OpenAPI snapshot.
+ * Build a named server route.
  *
  * @param array<string, string|int> $parameters
  */
-function openApiPath(string $template, array $parameters = []): URI
+function namedPath(string $template, array $parameters = []): URI
 {
-    return new URI\OpenApiPath($template, $parameters);
+    return new URI\NamedPath($template, $parameters);
 }
