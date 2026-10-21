@@ -32,8 +32,10 @@ Runtime-зависимости и публичный API пакета остаю
 | Разрешённые URL / token | 0.3.2 / 0.2.3 | 1.1.1 / 0.2.3 | 1.1.1 / 0.2.3 |
 | SHA-256 локального `composer.lock` | `01c57810367d15338dd13785d010f44a3c9ebca51e87da48187b68d29f4e8cbd` | `d4e1288798eae32ff497d8a3d607fe6aca07bfdb7ef72b9eb143917a7b1c61ce` | `5b63e327528d331e1b753d8245487c67c43f46358544bb365bb7d14c9b5027e3` |
 
-Во всех образах Composer 2.10.3. Команда `make integration PHP_VERSION=8.3` с локальным `.env`, где `TEST_DOMAIN_NAME=devtr6`, завершилась с exit 0: 56 tests / 55 assertions / 1 skipped (нет service API key). Интеграция на других версиях PHP для этого diff не запускалась. `composer.lock` и `.env` игнорируются Git. CI итогового SHA ещё ожидается.
+Во всех образах Composer 2.10.3. Команда `make integration PHP_VERSION=8.3` с локальным `.env`, где `TEST_DOMAIN_NAME=devtr6`, завершилась с exit 0: 56 tests / 55 assertions / 1 skipped (нет service API key). Интеграция на других версиях PHP для этого diff не запускалась. `composer.lock` и `.env` игнорируются Git.
 
 Точные локальные команды проверки: `make all PHP_VERSION=7.3` в `/tmp/pr25-73`, `make all PHP_VERSION=8.3` в `/tmp/vetmanager-rest-api-pr25`, `make all PHP_VERSION=8.5` в `/tmp/pr25-85`; `docker run --rm -v "$PWD":/app -w /app pr25-73:7.3 composer validate --strict`, `docker run --rm -v "$PWD":/app -w /app vetmanager-rest-api-pr25:8.3 composer validate --strict`, `docker run --rm -v "$PWD":/app -w /app pr25-85:8.5 composer validate --strict` соответственно. Каждая команда завершилась с exit 0.
 
 После реализации `/root/independent_review` проверил diff относительно `origin/main`: блокирующих замечаний нет. Приняты замечания об обязательности 12 CI jobs, точных командах и транзитивной runtime-зависимости; описание выше уточнено до commit.
+
+[CI run 39561871563](https://github.com/otis22/vetmanager-rest-api/actions/runs/39561871563) для `f69447bf92ecf89057bd4273933012197ec82fdc`: 12/12 jobs SUCCESS (latest PHP 7.3–8.5, minimum и production на 7.3/8.5). Это SHA с тем же `composer.json`; после добавления этой записи в PRD нужен зелёный CI окончательного SHA.
