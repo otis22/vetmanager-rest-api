@@ -31,8 +31,9 @@ record the new commit and SHA-256 hashes in the integration PRD, and run upstrea
 `python3 scripts/validate_openapi.py` before changing the roadmap.
 
 The [operation support matrix](docs/openapi/operation-support.json) lists every
-operation in this snapshot. `uri_support` describes URI construction only;
-`http_method_support` and `schema_support` remain `none`. Run
+operation in this snapshot. `uri_support` describes URI construction;
+`http_method_support` marks the optional `clinics_get` method, and
+`schema_support` remains `none`. Run
 `python3 -I scripts/check_openapi_contract.py` to check the pinned files, references,
 operation IDs, and matrix. The matrix is regenerated with `--refresh` after an
 intentional contract change and its diff must be reviewed.
@@ -51,6 +52,22 @@ It accepts only the [19 named templates](src/URI/OpenApiPath.php) in the pinned
 snapshot and percent-encodes each parameter as one path segment. This builds a URI;
 the application still chooses the HTTP method, authentication, query, and body.
 The legacy `uri()` helper retains its previous output and all previous model names.
+
+For the confirmed read-only clinics collection, an optional method layer uses a
+caller-configured Guzzle client, including its `base_uri` and error behavior:
+
+```php
+use GuzzleHttp\Client;
+use Otis22\VetmanagerRestApi\Methods\Clinics;
+use function Otis22\VetmanagerRestApi\byApiKey;
+
+$client = new Client(['base_uri' => 'https://myclinic.vetmanager2.ru/']);
+$response = (new Clinics($client))->get(byApiKey('myapikey'));
+```
+
+`get()` defaults to `['limit' => 1]`, accepts an optional query array without
+client-side validation, and returns the original PSR response. Direct Guzzle
+requests remain available for every other route.
 
 ## What for?
 

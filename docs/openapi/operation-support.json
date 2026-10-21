@@ -532,7 +532,7 @@
     "path": "/rest/api/clinics",
     "operationId": "get_rest_api_clinics",
     "uri_support": "model_uri",
-    "http_method_support": "none",
+    "http_method_support": "clinics_get",
     "schema_support": "none"
   },
   {

@@ -17,6 +17,7 @@ EXPECTED_HASHES = {
     YAML: "88dc8f2ef089eaabaf074127d40414be9ae9d15c8f730650f11520cb2893d13b",
 }
 METHODS = {"get", "post", "put", "delete", "patch", "head", "options", "trace"}
+SUPPORTED_METHODS = {("GET", "/rest/api/clinics"): "clinics_get"}
 
 
 def verify_hashes():
@@ -62,6 +63,9 @@ def named_templates():
 
 
 def expected_matrix(document):
+    clinics_method = (ROOT / "src/Methods/Clinics.php").read_text()
+    if "uri('clinics')->asString()" not in clinics_method or "'GET'" not in clinics_method:
+        raise ValueError("clinics method support differs from source")
     names = model_names()
     named = named_templates()
     paths = document["paths"]
@@ -96,7 +100,7 @@ def expected_matrix(document):
                 "path": path,
                 "operationId": operation_id,
                 "uri_support": uri_support,
-                "http_method_support": "none",
+                "http_method_support": SUPPORTED_METHODS.get((method.upper(), path), "none"),
                 "schema_support": "none",
             })
     if unusual != named:

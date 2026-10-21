@@ -31,7 +31,7 @@ unit: ## Run unit tests with code coverage check
 	$(docker) vendor/bin/php-coverage-checker build/logs/clover.xml 90
 
 integration: ## Run integration tests
-	docker run  --env-file=.env --rm -v $(CURDIR):/app -w /app $(base_dir):$(php_version) composer integration
+	docker run --env-file=.env -e COMPOSER_PROCESS_TIMEOUT=900 --rm -v $(CURDIR):/app -w /app $(base_dir):$(php_version) composer integration
 
 integration_one: ## Run specific integration test (usage: make integration_one TestName)
 	@if [ "$(filter-out $@,$(MAKECMDGOALS))" = "" ]; then \
