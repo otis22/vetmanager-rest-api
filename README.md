@@ -32,16 +32,19 @@ record the new commit and SHA-256 hashes in the integration PRD, and run upstrea
 
 The [operation support matrix](docs/openapi/operation-support.json) lists every
 operation in this snapshot. `uri_support` describes URI construction;
-`http_method_support` marks the optional confirmed read-only GET methods, and
+`http_method_support` marks the optional confirmed GET and Unit write methods, and
 `schema_support` remains `none`. Run
 `python3 -I scripts/check_openapi_contract.py` to check the pinned files, references,
 operation IDs, and matrix. The matrix is regenerated with `--refresh` after an
 intentional contract change and its diff must be reviewed.
 
 Optional `Methods\Unit::post()` and `put()` send caller-provided arrays as JSON to
-`POST /rest/api/Unit` and `PUT /rest/api/Unit/{ID}` and return the original response.
-They do not validate fields or parse the response. The caller is responsible
-for write permission, ID and payload correctness, and record cleanup. Minimal
+`POST /rest/api/Unit` and `PUT /rest/api/Unit/{ID}`. `delete()` sends DELETE to
+`/rest/api/Unit/{ID}` without a request body. All three return the original
+response; they do not parse it. The caller is responsible for permission,
+ID and payload correctness, checking `success`, and the record lifecycle.
+Authorization and related-record constraints are decided by the server; DELETE
+behavior for a Unit referenced by other records is unverified. Minimal
 JSON POST and PUT were observed on the test tenant; the full request schema,
 including the behavior of omitted fields on PUT, remains unverified.
 

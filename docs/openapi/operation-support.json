@@ -260,7 +260,7 @@
     "path": "/rest/api/Unit/{ID}",
     "operationId": "delete_rest_api_Unit_ID",
     "uri_support": "model_uri",
-    "http_method_support": "none",
+    "http_method_support": "unit_delete",
     "schema_support": "none"
   },
   {

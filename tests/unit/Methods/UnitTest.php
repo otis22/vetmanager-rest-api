@@ -102,4 +102,41 @@ final class UnitTest extends TestCase
         ]);
         self::assertSame(406, (new Unit($returning))->put(byApiKey('test-key'), 50, [])->getStatusCode());
     }
+
+    public function testDeleteSendsOnlyHeadersToExactIdAndReturnsOriginalResponse(): void
+    {
+        $response = new Response(200, [], '{"success":true}');
+        $history = [];
+        $stack = HandlerStack::create(new MockHandler([$response]));
+        $stack->push(Middleware::history($history));
+        $client = new Client(['base_uri' => 'https://example.test/', 'handler' => $stack]);
+
+        $actual = (new Unit($client))->delete(byApiKey('test-key'), 50);
+
+        self::assertSame($response, $actual);
+        self::assertCount(1, $history);
+        $request = $history[0]['request'];
+        self::assertSame('DELETE', $request->getMethod());
+        self::assertSame('https://example.test/rest/api/Unit/50', (string)$request->getUri());
+        self::assertSame('test-key', $request->getHeaderLine('X-REST-API-KEY'));
+        self::assertSame('', (string)$request->getBody());
+        self::assertFalse($request->hasHeader('Content-Type'));
+    }
+
+    public function testDeletePreservesGuzzleHttpErrorBehavior(): void
+    {
+        $throwing = new Client(['handler' => HandlerStack::create(new MockHandler([new Response(404)]))]);
+        try {
+            (new Unit($throwing))->delete(byApiKey('test-key'), 50);
+            self::fail('Expected the Guzzle exception');
+        } catch (ClientException $exception) {
+            self::assertSame(404, $exception->getResponse()->getStatusCode());
+        }
+
+        $returning = new Client([
+            'handler' => HandlerStack::create(new MockHandler([new Response(404)])),
+            'http_errors' => false,
+        ]);
+        self::assertSame(404, (new Unit($returning))->delete(byApiKey('test-key'), 50)->getStatusCode());
+    }
 }

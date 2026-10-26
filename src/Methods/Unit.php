@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface;
 use function Otis22\VetmanagerRestApi\uri;
 
 /**
- * Optional JSON POST and PUT for Unit; the caller owns the payload and record lifecycle.
+ * Optional POST, PUT and DELETE for Unit; the caller owns the record lifecycle.
  */
 final class Unit
 {
@@ -44,6 +44,15 @@ final class Unit
             'PUT',
             uri('Unit', $id)->asString(),
             ['headers' => $headers->asKeyValue(), 'json' => $body]
+        );
+    }
+
+    public function delete(Headers $headers, int $id): ResponseInterface
+    {
+        return $this->client->request(
+            'DELETE',
+            uri('Unit', $id)->asString(),
+            ['headers' => $headers->asKeyValue()]
         );
     }
 }
