@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface;
 use function Otis22\VetmanagerRestApi\uri;
 
 /**
- * Optional JSON POST for Unit; the caller owns the payload and record lifecycle.
+ * Optional JSON POST and PUT for Unit; the caller owns the payload and record lifecycle.
  */
 final class Unit
 {
@@ -31,6 +31,18 @@ final class Unit
         return $this->client->request(
             'POST',
             uri('Unit')->asString(),
+            ['headers' => $headers->asKeyValue(), 'json' => $body]
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $body
+     */
+    public function put(Headers $headers, int $id, array $body): ResponseInterface
+    {
+        return $this->client->request(
+            'PUT',
+            uri('Unit', $id)->asString(),
             ['headers' => $headers->asKeyValue(), 'json' => $body]
         );
     }

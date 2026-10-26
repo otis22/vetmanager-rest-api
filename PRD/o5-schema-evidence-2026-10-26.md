@@ -75,7 +75,7 @@ body» требует безопасного согласованного тес
 | storeDocument | 20 | 3 | 0 | нет |
 | street | 5 | 1 | 2 | нет: метаданные недоступны через PII-фильтр |
 | suppliers | 16 | 6 | 1 | нет |
-| unit | 3 | 0 | 2 | GET-форма подтверждена; body нет |
+| unit | 3 | 0 | 2 | GET-форма, минимальные POST/PUT наблюдались; полная схема body не подтверждена |
 | user | 21 | 6 | 1 | нет: потенциальные ПД не читались |
 | userPosition | 3 | 0 | 2 | нет |
 
@@ -95,8 +95,8 @@ body» требует безопасного согласованного тес
 | POST | `MedicalCards/AddVaccination` | `post_rest_api_MedicalCards_AddVaccination` | medicalCards | нет | нет |
 | PUT | `MedicalCards/{ID}` | `put_rest_api_MedicalCards_ID` | medicalCards | нет | нет |
 | POST | `Suppliers` | `post_rest_api_Suppliers` | suppliers | нет | нет |
-| POST | `Unit` | `post_rest_api_Unit` | unit | нет | минимальный JSON принят (201); правила схемы не проверены |
-| PUT | `Unit/{ID}` | `put_rest_api_Unit_ID` | unit | нет | нет |
+| POST | `Unit` | `post_rest_api_Unit` | unit | нет | два минимальных JSON POST → 201; очистка подтверждена |
+| PUT | `Unit/{ID}` | `put_rest_api_Unit_ID` | unit | нет | минимальный JSON → 201; null/unknown → 406; 17 символов → 201 |
 | POST | `admission` | `post_rest_api_admission` | admission | нет | нет |
 | PUT | `admission/{ID}` | `put_rest_api_admission_ID` | admission | нет | нет |
 | POST | `city` | `post_rest_api_city` | city | нет | нет |
@@ -207,3 +207,26 @@ Redash DS 6 показал ID=48: 0 и маркер: 0. Источник и вр
 `schema_support` остаётся `none`; границы узкого opt-in метода описаны в
 `PRD/o5-unit-post-method.md`. Предыдущие разделы сохраняют состояние на время
 исходного read-only исследования.
+
+## Дополнение после контролируемой POST/PUT-проверки Unit
+
+2026-10-26 08:57–08:59 UTC, devtr6, технический маркер `o5u47a0b7a8256d`.
+До POST Redash DS 6 и GET списка показали ноль совпадений. Второй минимальный
+JSON POST вернул 201; точный ID 50 немедленно сохранён на хосте и подтверждён
+GET по ID. PUT того же `title` вернул 201; `title:null` — 406; `title` из 17
+символов — 201 и сохранил все 17 символов; неизвестное поле — 406. Безопасные
+верхние ключи успешных ответов: `success`, `message`, `data`; при 406:
+`success`, `error`, `message`. Содержимое сообщений не сохранялось.
+
+После 17-символьного PUT автоматическая очистка остановилась из-за изменения
+title. Redash подтвердил ID 50 с новым техническим title; повторный GET сверил
+обе величины, затем DELETE вернул 200/success=true. GET по ID и поиск маркера
+через API показали отсутствие. Redash в 08:59:15 UTC дал 0 по ID и маркеру.
+Подробная хронология и контракт метода — `PRD/o5-unit-put-method.md`.
+
+Итоговый знаменатель **полностью подтверждённых схем остаётся 0/36 и body
+операций 0/39**: проверены отдельные сценарии только для Unit, не вся схема.
+`schema_support=none`. Предположение о max length 16 из локальной модели и
+метаданных противоречит wire-пробе; валидатор длины и изменение upstream
+OpenAPI не обоснованы. Поля `status`, неверный scalar type, поведение пустого
+тела и сохранность неуказанных полей после PUT остаются неподтверждёнными.

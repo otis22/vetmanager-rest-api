@@ -20,6 +20,7 @@ METHODS = {"get", "post", "put", "delete", "patch", "head", "options", "trace"}
 SUPPORTED_METHODS = {
     ("GET", "/rest/api/clinics"): "clinics_get",
     ("POST", "/rest/api/Unit"): "unit_post",
+    ("PUT", "/rest/api/Unit/{ID}"): "unit_put",
 }
 
 
@@ -70,8 +71,9 @@ def expected_matrix(document):
     if "uri('clinics')->asString()" not in clinics_method or "'GET'" not in clinics_method:
         raise ValueError("clinics method support differs from source")
     unit_method = (ROOT / "src/Methods/Unit.php").read_text()
-    if "uri('Unit')->asString()" not in unit_method or "'POST'" not in unit_method:
-        raise ValueError("unit POST support differs from source")
+    if ("uri('Unit')->asString()" not in unit_method or "'POST'" not in unit_method
+            or "uri('Unit', $id)->asString()" not in unit_method or "'PUT'" not in unit_method):
+        raise ValueError("unit POST/PUT support differs from source")
     names = model_names()
     named = named_templates()
     paths = document["paths"]
