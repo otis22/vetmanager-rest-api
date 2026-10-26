@@ -252,7 +252,7 @@
     "path": "/rest/api/Unit",
     "operationId": "post_rest_api_Unit",
     "uri_support": "model_uri",
-    "http_method_support": "none",
+    "http_method_support": "unit_post",
     "schema_support": "none"
   },
   {
@@ -260,7 +260,7 @@
     "path": "/rest/api/Unit/{ID}",
     "operationId": "delete_rest_api_Unit_ID",
     "uri_support": "model_uri",
-    "http_method_support": "none",
+    "http_method_support": "unit_delete",
     "schema_support": "none"
   },
   {
@@ -268,7 +268,7 @@
     "path": "/rest/api/Unit/{ID}",
     "operationId": "put_rest_api_Unit_ID",
     "uri_support": "model_uri",
-    "http_method_support": "none",
+    "http_method_support": "unit_put",
     "schema_support": "none"
   },
   {

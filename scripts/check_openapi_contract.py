@@ -22,6 +22,9 @@ SUPPORTED_METHODS = {
     ("GET", "/rest/api/MedicalCards/AllDiagnoses"): "medical_cards_all_diagnoses_get",
     ("GET", "/rest/api/MedicalCards/MedcardsTextTemplates"): "medical_cards_medcards_text_templates_get",
     ("GET", "/rest/api/user/anonymousList"): "user_anonymous_list_get",
+    ("POST", "/rest/api/Unit"): "unit_post",
+    ("PUT", "/rest/api/Unit/{ID}"): "unit_put",
+    ("DELETE", "/rest/api/Unit/{ID}"): "unit_delete",
 }
 
 
@@ -71,6 +74,16 @@ def expected_matrix(document):
     clinics_method = (ROOT / "src/Methods/Clinics.php").read_text()
     if "uri('clinics')->asString()" not in clinics_method or "'GET'" not in clinics_method:
         raise ValueError("clinics method support differs from source")
+    unit_method = (ROOT / "src/Methods/Unit.php").read_text()
+    if ("uri('Unit')->asString()" not in unit_method or "'POST'" not in unit_method
+            or "uri('Unit', $id)->asString()" not in unit_method or "'PUT'" not in unit_method
+            or re.search(
+                r"public function delete\(Headers \$headers, int \$id\): ResponseInterface\s*"
+                r"\{\s*return \$this->client->request\(\s*'DELETE',\s*"
+                r"uri\('Unit', \$id\)->asString\(\),",
+                unit_method,
+            ) is None):
+        raise ValueError("unit POST/PUT/DELETE support differs from source")
     for source_file, template in (
         ("MedicalCardsAllDiagnoses.php", "MedicalCards/AllDiagnoses"),
         ("MedicalCardsMedcardsTextTemplates.php", "MedicalCards/MedcardsTextTemplates"),
