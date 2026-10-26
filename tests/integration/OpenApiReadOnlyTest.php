@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Otis22\VetmanagerRestApi\integration;
 
 use Otis22\VetmanagerRestApi\Methods\Clinics;
+use Otis22\VetmanagerRestApi\Methods\MedicalCardsAllDiagnoses;
+use Otis22\VetmanagerRestApi\Methods\MedicalCardsMedcardsTextTemplates;
+use Otis22\VetmanagerRestApi\Methods\UserAnonymousList;
 use Otis22\VetmanagerRestApi\Support\ClientFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -54,5 +57,32 @@ final class OpenApiReadOnlyTest extends TestCase
         $json = json_decode((string)$response->getBody(), true);
         self::assertIsArray($json);
         self::assertSame(true, $json['success'] ?? null);
+    }
+
+    /**
+     * @dataProvider confirmedMethods
+     * @param class-string $class
+     */
+    public function testConfirmedReadOnlyMethod(string $class): void
+    {
+        $client = ClientFactory::createClient();
+        /** @var MedicalCardsAllDiagnoses|MedicalCardsMedcardsTextTemplates|UserAnonymousList $method */
+        $method = new $class($client);
+        $response = $method->get(byApiKey((string)getenv('TEST_API_KEY')));
+        self::assertSame(200, $response->getStatusCode());
+        self::assertStringContainsString('application/json', $response->getHeaderLine('Content-Type'));
+        $json = json_decode((string)$response->getBody(), true);
+        self::assertIsArray($json);
+        self::assertSame(true, $json['success'] ?? null);
+    }
+
+    /** @return array<string, array{string}> */
+    public function confirmedMethods(): array
+    {
+        return [
+            'AllDiagnoses method' => [MedicalCardsAllDiagnoses::class],
+            'MedcardsTextTemplates method' => [MedicalCardsMedcardsTextTemplates::class],
+            'anonymousList method' => [UserAnonymousList::class],
+        ];
     }
 }

@@ -32,7 +32,7 @@ record the new commit and SHA-256 hashes in the integration PRD, and run upstrea
 
 The [operation support matrix](docs/openapi/operation-support.json) lists every
 operation in this snapshot. `uri_support` describes URI construction;
-`http_method_support` marks the optional `clinics_get` method, and
+`http_method_support` marks the optional confirmed read-only GET methods, and
 `schema_support` remains `none`. Run
 `python3 -I scripts/check_openapi_contract.py` to check the pinned files, references,
 operation IDs, and matrix. The matrix is regenerated with `--refresh` after an
@@ -70,6 +70,20 @@ $response = (new Clinics($client))->get(byApiKey('myapikey'));
 `get()` defaults to `['limit' => 1]`, accepts an optional query array without
 client-side validation, and returns the original PSR response. Direct Guzzle
 requests remain available for every other route.
+
+The same opt-in GET contract is available for three more routes confirmed on
+the test tenant:
+
+| Route | Class |
+| --- | --- |
+| `MedicalCards/AllDiagnoses` | `Methods\MedicalCardsAllDiagnoses` |
+| `MedicalCards/MedcardsTextTemplates` | `Methods\MedicalCardsMedcardsTextTemplates` |
+| `user/anonymousList` | `Methods\UserAnonymousList` |
+
+For example, `(new Methods\MedicalCardsAllDiagnoses($client))->get($headers)`
+uses `namedPath('MedicalCards/AllDiagnoses')`, sends `GET` with `limit=1` by
+default, and returns the original response. Pass an explicit query array to
+replace that default. These methods do not parse or validate the response.
 
 ## What for?
 

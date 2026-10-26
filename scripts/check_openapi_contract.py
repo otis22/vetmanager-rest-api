@@ -17,7 +17,12 @@ EXPECTED_HASHES = {
     YAML: "88dc8f2ef089eaabaf074127d40414be9ae9d15c8f730650f11520cb2893d13b",
 }
 METHODS = {"get", "post", "put", "delete", "patch", "head", "options", "trace"}
-SUPPORTED_METHODS = {("GET", "/rest/api/clinics"): "clinics_get"}
+SUPPORTED_METHODS = {
+    ("GET", "/rest/api/clinics"): "clinics_get",
+    ("GET", "/rest/api/MedicalCards/AllDiagnoses"): "medical_cards_all_diagnoses_get",
+    ("GET", "/rest/api/MedicalCards/MedcardsTextTemplates"): "medical_cards_medcards_text_templates_get",
+    ("GET", "/rest/api/user/anonymousList"): "user_anonymous_list_get",
+}
 
 
 def verify_hashes():
@@ -66,6 +71,14 @@ def expected_matrix(document):
     clinics_method = (ROOT / "src/Methods/Clinics.php").read_text()
     if "uri('clinics')->asString()" not in clinics_method or "'GET'" not in clinics_method:
         raise ValueError("clinics method support differs from source")
+    for source_file, template in (
+        ("MedicalCardsAllDiagnoses.php", "MedicalCards/AllDiagnoses"),
+        ("MedicalCardsMedcardsTextTemplates.php", "MedicalCards/MedcardsTextTemplates"),
+        ("UserAnonymousList.php", "user/anonymousList"),
+    ):
+        source = (ROOT / "src/Methods" / source_file).read_text()
+        if "namedPath('" + template + "')->asString()" not in source or "'GET'" not in source:
+            raise ValueError("method support differs from source: " + source_file)
     names = model_names()
     named = named_templates()
     paths = document["paths"]
