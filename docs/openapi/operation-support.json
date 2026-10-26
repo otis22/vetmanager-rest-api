@@ -252,7 +252,7 @@
     "path": "/rest/api/Unit",
     "operationId": "post_rest_api_Unit",
     "uri_support": "model_uri",
-    "http_method_support": "none",
+    "http_method_support": "unit_post",
     "schema_support": "none"
   },
   {

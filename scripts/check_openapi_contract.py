@@ -17,7 +17,10 @@ EXPECTED_HASHES = {
     YAML: "88dc8f2ef089eaabaf074127d40414be9ae9d15c8f730650f11520cb2893d13b",
 }
 METHODS = {"get", "post", "put", "delete", "patch", "head", "options", "trace"}
-SUPPORTED_METHODS = {("GET", "/rest/api/clinics"): "clinics_get"}
+SUPPORTED_METHODS = {
+    ("GET", "/rest/api/clinics"): "clinics_get",
+    ("POST", "/rest/api/Unit"): "unit_post",
+}
 
 
 def verify_hashes():
@@ -66,6 +69,9 @@ def expected_matrix(document):
     clinics_method = (ROOT / "src/Methods/Clinics.php").read_text()
     if "uri('clinics')->asString()" not in clinics_method or "'GET'" not in clinics_method:
         raise ValueError("clinics method support differs from source")
+    unit_method = (ROOT / "src/Methods/Unit.php").read_text()
+    if "uri('Unit')->asString()" not in unit_method or "'POST'" not in unit_method:
+        raise ValueError("unit POST support differs from source")
     names = model_names()
     named = named_templates()
     paths = document["paths"]

@@ -38,6 +38,19 @@ operation in this snapshot. `uri_support` describes URI construction;
 operation IDs, and matrix. The matrix is regenerated with `--refresh` after an
 intentional contract change and its diff must be reviewed.
 
+An optional `Methods\Unit::post()` sends a caller-provided array as JSON to
+`POST /rest/api/Unit` and returns the original response. It does not validate
+fields or parse the response. The caller is responsible for write permission,
+payload correctness, and record cleanup. Only one minimal JSON POST has been
+observed on the test tenant; PUT and the full request schema remain unverified.
+
+```php
+$response = (new \Otis22\VetmanagerRestApi\Methods\Unit($client))->post(
+    $headers,
+    ['title' => 'test']
+);
+```
+
 For named server routes, use the separate `namedPath()` helper:
 
 ```php
