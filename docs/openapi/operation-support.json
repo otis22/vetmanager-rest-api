@@ -124,7 +124,7 @@
     "path": "/rest/api/MedicalCards/AllDiagnoses",
     "operationId": "get_rest_api_MedicalCards_AllDiagnoses",
     "uri_support": "named_path",
-    "http_method_support": "none",
+    "http_method_support": "medical_cards_all_diagnoses_get",
     "schema_support": "none"
   },
   {
@@ -132,7 +132,7 @@
     "path": "/rest/api/MedicalCards/MedcardsTextTemplates",
     "operationId": "get_rest_api_MedicalCards_MedcardsTextTemplates",
     "uri_support": "named_path",
-    "http_method_support": "none",
+    "http_method_support": "medical_cards_medcards_text_templates_get",
     "schema_support": "none"
   },
   {
@@ -1028,7 +1028,7 @@
     "path": "/rest/api/user/anonymousList",
     "operationId": "get_rest_api_user_anonymousList",
     "uri_support": "named_path",
-    "http_method_support": "none",
+    "http_method_support": "user_anonymous_list_get",
     "schema_support": "none"
   },
   {

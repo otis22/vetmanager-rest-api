@@ -37,3 +37,17 @@ Claude Sonnet получил полный PRD, текущий `Unit`, `WithId` �
 worktree отсутствовал локальный `.env`; существующая тестовая конфигурация
 devtr6 перенесена из исходного checkout и повторный вызов прошёл. PHP 7.3–8.5
 должны быть подтверждены CI нового SHA.
+
+## Согласование stacked PR
+
+После первого push обнаружено, что PR №29 и №30 имеют общий предок
+`44c137c`, но коммит №29 не был предком №30. После смены base №30 на ветку
+№29 GitHub показал конфликт. Обычным merge-коммитом изменения №29 включены
+в №30; конфликт в `Tasks.md` и `scripts/check_openapi_contract.py` разрешён
+с сохранением трёх GET №29 и POST/PUT Unit №30. Матрица содержит шесть
+поддержанных операций, `schema_support=none` для всех 137.
+
+На объединённом дереве: `python3 -I scripts/check_openapi_contract.py` — exit 0;
+`make all PHP_VERSION=8.3` — exit 0, 98 тестов, 143 assertions, 95,61%;
+`timeout 960 make integration PHP_VERSION=8.3` — exit 0, 65 тестов,
+91 assertions, 1 skipped; `git diff --cached --check` — exit 0.

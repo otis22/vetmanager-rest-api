@@ -19,6 +19,9 @@ EXPECTED_HASHES = {
 METHODS = {"get", "post", "put", "delete", "patch", "head", "options", "trace"}
 SUPPORTED_METHODS = {
     ("GET", "/rest/api/clinics"): "clinics_get",
+    ("GET", "/rest/api/MedicalCards/AllDiagnoses"): "medical_cards_all_diagnoses_get",
+    ("GET", "/rest/api/MedicalCards/MedcardsTextTemplates"): "medical_cards_medcards_text_templates_get",
+    ("GET", "/rest/api/user/anonymousList"): "user_anonymous_list_get",
     ("POST", "/rest/api/Unit"): "unit_post",
     ("PUT", "/rest/api/Unit/{ID}"): "unit_put",
 }
@@ -74,6 +77,14 @@ def expected_matrix(document):
     if ("uri('Unit')->asString()" not in unit_method or "'POST'" not in unit_method
             or "uri('Unit', $id)->asString()" not in unit_method or "'PUT'" not in unit_method):
         raise ValueError("unit POST/PUT support differs from source")
+    for source_file, template in (
+        ("MedicalCardsAllDiagnoses.php", "MedicalCards/AllDiagnoses"),
+        ("MedicalCardsMedcardsTextTemplates.php", "MedicalCards/MedcardsTextTemplates"),
+        ("UserAnonymousList.php", "user/anonymousList"),
+    ):
+        source = (ROOT / "src/Methods" / source_file).read_text()
+        if "namedPath('" + template + "')->asString()" not in source or "'GET'" not in source:
+            raise ValueError("method support differs from source: " + source_file)
     names = model_names()
     named = named_templates()
     paths = document["paths"]
